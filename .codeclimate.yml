@@ -37,4 +37,3 @@ exclude_paths:
 - db/
 - vendor/
 - app/assets/
-# test
