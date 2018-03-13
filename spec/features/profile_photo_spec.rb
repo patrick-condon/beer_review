@@ -9,12 +9,14 @@ feature 'profile photo' do
     fill_in 'Password', with: 'boomstick!3vilisd3ad'
     fill_in 'Password confirmation', with: 'boomstick!3vilisd3ad'
     attach_file :user_profile_photo,
-      "#{Rails.root}/spec/support/images/IMG_3327.jpg"
+                "#{Rails.root}/spec/support/images/IMG_3327.jpg"
     click_button 'Sign up'
 
     expect(page).to have_css("img[src*='IMG_3327.jpg']")
   end
+end
 
+feature 'edit profile photo' do
   scenario 'user changes profile_photo' do
     visit root_path
     click_link 'Sign Up'
@@ -22,13 +24,14 @@ feature 'profile photo' do
     fill_in 'Password', with: 'boomstick!3vilisd3ad'
     fill_in 'Password confirmation', with: 'boomstick!3vilisd3ad'
     attach_file :user_profile_photo,
-      "#{Rails.root}/spec/support/images/IMG_3327.jpg"
+    "#{Rails.root}/spec/support/images/IMG_3327.jpg"
     click_button 'Sign up'
 
     expect(page).to have_css("img[src*='IMG_3327.jpg']")
 
     click_on 'Edit'
-    attach_file :user_profile_photo, "#{Rails.root}/spec/support/images/exit.png"
+    attach_file :user_profile_photo,
+    "#{Rails.root}/spec/support/images/exit.png"
     fill_in 'Current password', with: 'boomstick!3vilisd3ad'
     click_on 'Update'
 
