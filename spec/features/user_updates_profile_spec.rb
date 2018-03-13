@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 feature 'user updates information' do
-  
   scenario 'authenticated user edits information' do
     user = FactoryBot.create(:user)
 
@@ -51,7 +50,9 @@ feature 'user updates information' do
 
     expect(page).to have_content('Invalid Email or password')
   end
+end
 
+feature 'user can delete account' do
   scenario 'user deletes account' do
     user = FactoryBot.create(:user)
 
