@@ -4,13 +4,15 @@ describe Beer do
   describe '.new' do
     it 'takes a name, brewery name, style, and abv' do
       beer = Beer.new(beer_name: 'Miller lite', brewery_name: 'Coors',
-        beer_style: 'American Pilsner', beer_abv: 4.2)
+                      beer_style: 'American Pilsner', beer_abv: 4.2)
       expect(beer).to be_a(Beer)
     end
   end
 
-  let(:beer) { Beer.create(beer_name: 'Miller lite', brewery_name: 'Coors',
-    beer_style: 'American Pilsner', beer_abv: 4.2) }
+  let(:beer) {
+    Beer.create(beer_name: 'Miller lite', brewery_name: 'Coors',
+    beer_style: 'American Pilsner', beer_abv: 4.2)
+  }
 
   describe 'Model' do
     it 'has attributes' do
@@ -21,7 +23,9 @@ describe Beer do
     end
   end
 
-  let(:beer2) { Beer.create(beer_name: ' ', brewery_name: '', beer_style: '', beer_abv: '') }
+  let(:beer2) {
+    Beer.create(beer_name: ' ', brewery_name: '', beer_style: '', beer_abv: '') 
+  }
 
   describe 'Errors' do
     it 'create model with no input' do
