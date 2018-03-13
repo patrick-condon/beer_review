@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180313140133) do
+ActiveRecord::Schema.define(version: 20180313172809) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,7 +20,7 @@ ActiveRecord::Schema.define(version: 20180313140133) do
     t.string "brewery_name", null: false
     t.string "beer_style", null: false
     t.float "beer_abv", null: false
-    t.string "beer_description"
+    t.text "beer_description"
     t.integer "beer_active"
     t.string "beer_label"
     t.datetime "created_at", null: false
