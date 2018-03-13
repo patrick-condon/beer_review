@@ -1,6 +1,7 @@
 require 'rails_helper'
 
 feature 'user updates information' do
+  
   scenario 'authenticated user edits information' do
     user = FactoryBot.create(:user)
 
