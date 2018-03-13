@@ -9,11 +9,9 @@ describe Beer do
     end
   end
 
-  let(:beer)
-    Beer.create(beer_name: 'Miller lite', brewery_name: 'Coors',
-    beer_style: 'American Pilsner', beer_abv: 4.2)
-
   describe 'Model' do
+    beer = Beer.create(beer_name: 'Miller lite', brewery_name: 'Coors',
+                       beer_style: 'American Pilsner', beer_abv: 4.2)
     it 'has attributes' do
       expect(beer.beer_name).to eq('Miller lite')
       expect(beer.brewery_name).to eq('Coors')
