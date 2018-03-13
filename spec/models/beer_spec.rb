@@ -11,8 +11,7 @@ describe Beer do
 
   let(:beer)
     Beer.create(beer_name: 'Miller lite', brewery_name: 'Coors',
-                beer_style: 'American Pilsner', beer_abv: 4.2)
-  
+      beer_style: 'American Pilsner', beer_abv: 4.2)
 
   describe 'Model' do
     it 'has attributes' do
