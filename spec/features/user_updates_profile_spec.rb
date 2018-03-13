@@ -1,16 +1,6 @@
 require 'rails_helper'
 
 feature 'user updates information' do
-
-  # As an authenticated user
-  # I want to update my information
-  # So that I can keep my profile up to date
-
-  # Acceptance Criteria
-  # * If I'm signed in, I have an option to sign out
-  # * When I opt to sign out, I get a confirmation that my identity has been
-  #   forgotten on the machine I'm using
-
   scenario 'authenticated user edits information' do
     user = FactoryBot.create(:user)
 
