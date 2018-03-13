@@ -9,10 +9,10 @@ describe Beer do
     end
   end
 
-  let(:beer) {
+  let(:beer)
     Beer.create(beer_name: 'Miller lite', brewery_name: 'Coors',
-    beer_style: 'American Pilsner', beer_abv: 4.2)
-  }
+                beer_style: 'American Pilsner', beer_abv: 4.2)
+  
 
   describe 'Model' do
     it 'has attributes' do
@@ -23,11 +23,9 @@ describe Beer do
     end
   end
 
-  let(:beer2) {
-    Beer.create(beer_name: ' ', brewery_name: '', beer_style: '', beer_abv: '') 
-  }
-
   describe 'Errors' do
+    beer2 = Beer.create(beer_name: ' ', brewery_name: '', beer_style: '',
+                        beer_abv: '')
     it 'create model with no input' do
       expect(beer2).to_not be_valid
     end
