@@ -1,10 +1,11 @@
 require 'rails_helper'
 
-feature 'user updates information', %{
-  As an authenticated user
-  I want to update my information
-  So that I can keep my profile up to date
-  } do
+feature 'user updates information' do
+
+  # As an authenticated user
+  # I want to update my information
+  # So that I can keep my profile up to date
+
   # Acceptance Criteria
   # * If I'm signed in, I have an option to sign out
   # * When I opt to sign out, I get a confirmation that my identity has been
@@ -22,9 +23,9 @@ feature 'user updates information', %{
     expect(page).to have_content('Signed in successfully')
 
     click_on 'Edit'
-    fill_in "Password", with: 'password'
-    fill_in "Password confirmation", with: 'password'
-    fill_in "Current password", with: user.password
+    fill_in 'Password', with: 'password'
+    fill_in 'Password confirmation', with: 'password'
+    fill_in 'Current password', with: user.password
     click_on 'Update'
 
     expect(page).to have_content('Your account has been updated successfully')
@@ -41,18 +42,18 @@ feature 'user updates information', %{
     expect(page).to have_content('Signed in successfully')
 
     click_on 'Edit'
-    fill_in "Password", with: 'newpassword'
-    fill_in "Password confirmation", with: 'newpassword'
-    fill_in "Current password", with: user.password
+    fill_in 'Password', with: 'newpassword'
+    fill_in 'Password confirmation', with: 'newpassword'
+    fill_in 'Current password', with: user.password
     click_on 'Update'
 
     expect(page).to have_content('Your account has been updated successfully')
 
-    click_link "Sign Out"
+    click_link 'Sign Out'
 
     expect(page).to have_content('Signed out successfully')
 
-    click_on "Sign In"
+    click_on 'Sign In'
     fill_in 'Email', with: user.email
     fill_in 'Password', with: user.password
     click_button 'Log in'
