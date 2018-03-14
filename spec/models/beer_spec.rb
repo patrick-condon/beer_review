@@ -11,7 +11,7 @@ describe Beer do
 
   describe 'Model' do
     beer = Beer.new(beer_name: 'Miller lite', brewery_name: 'Coors',
-                       beer_style: 'American Pilsner', beer_abv: 4.2)
+                    beer_style: 'American Pilsner', beer_abv: 4.2)
     it 'has attributes' do
       expect(beer.beer_name).to eq('Miller lite')
       expect(beer.brewery_name).to eq('Coors')
@@ -22,7 +22,7 @@ describe Beer do
 
   describe 'Errors' do
     beer2 = Beer.new(beer_name: ' ', brewery_name: '', beer_style: '',
-                        beer_abv: '')
+                     beer_abv: '')
     it 'create model with no input' do
       expect(beer2).to_not be_valid
     end
