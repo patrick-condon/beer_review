@@ -1,6 +1,10 @@
 {
   "name": "beer_review",
   "private": true,
+  "engines": {
+    "node": ">=6.0.0",
+    "yarn": ">=0.25.2"
+  },
   "dependencies": {
     "@rails/webpacker": "~3.3.0",
     "babel-preset-react": "~6.24.1",
@@ -31,8 +35,5 @@
     "start": "./bin/webpack-dev-server",
     "test": "node_modules/.bin/karma start karma.conf.js",
     "webpack": "node_modules/.bin/webpack --config ./react/webpack.config.js"
-  },
-  "engines": {
-    "node": ">=4.0"
   }
 }
