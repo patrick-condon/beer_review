@@ -420,13 +420,8 @@ DEPENDENCIES
   carrierwave
   coveralls
   devise
-<<<<<<< HEAD
   factory_bot_rails (~> 4.0)
   dotenv-rails
-=======
-  dotenv-rails
-  factory_bot
->>>>>>> c444fb8b9a42170c21d948565106fcc5d847b4a7
   fog
   foundation-rails (~> 5.0)
   jbuilder (~> 2.5)
