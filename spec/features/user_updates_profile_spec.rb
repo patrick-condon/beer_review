@@ -9,6 +9,7 @@ feature 'user updates information' do
     fill_in 'Password', with: user.password
     click_button 'Log in'
     click_on 'Edit'
+    fill_in 'Username', with: 'newusername'
     fill_in 'Password', with: 'newpassword'
     fill_in 'Password confirmation', with: 'newpassword'
     fill_in 'Current password', with: user.password
