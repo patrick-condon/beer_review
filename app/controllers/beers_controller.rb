@@ -1,4 +1,4 @@
-require 'pry'
+# Ruby Controller for Beer Model
 class BeersController < ApplicationController
   def index
     @beers = Beer.all

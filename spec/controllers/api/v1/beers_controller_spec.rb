@@ -1,20 +1,18 @@
 require 'rails_helper'
 
 RSpec.describe Api::V1::BeersController, type: :controller do
-  let!(:first_beer) { Beer.create(
-    beer_name: 'Burning River',
-    brewery_name: 'Great Lakes',
-    beer_style: 'Pale Ale',
-    beer_abv: 5.8
+  let!(:first_beer) do
+    Beer.create(
+      beer_name: 'Burning River', brewery_name: 'Great Lakes',
+      beer_style: 'Pale Ale', beer_abv: 5.8
     )
-  }
-  let!(:second_beer) { Beer.create(
-    beer_name: '60 Minute Ale',
-    brewery_name: 'Dogfish',
-    beer_style: 'IPA',
-    beer_abv: 6.0
+  end
+  let!(:second_beer) do
+    Beer.create(
+      beer_name: '60 Minute Ale', brewery_name: 'Dogfish',
+      beer_style: 'IPA', beer_abv: 6.0
     )
-  }
+  end
   describe 'GET#index' do
     it 'should return a list of beers' do
       get :index
