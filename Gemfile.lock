@@ -420,8 +420,8 @@ DEPENDENCIES
   carrierwave
   coveralls
   devise
-  factory_bot_rails (~> 4.0)
   dotenv-rails
+  factory_bot_rails (~> 4.0)
   fog
   foundation-rails (~> 5.0)
   jbuilder (~> 2.5)

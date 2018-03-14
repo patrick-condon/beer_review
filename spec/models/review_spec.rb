@@ -1,29 +1,19 @@
 require 'spec_helper'
+require 'rails_helper'
 
-describe Review do
-  describe '.new' do
-    it 'takes a review id, body, rating, and vote score' do
-      review = Review.new(beer_id: 1, body: 'this is great!', rating: 4,
-                          vote_score: 0)
-      expect(review).to be_a(Review)
-    end
-  end
+describe Review, type: :model do
+  it { should have_valid(:beer_id).when(1) }
+  it { should_not have_valid(:beer_id).when(nil, "") }
 
-  describe 'Model' do
-    review = Review.new(beer_id: 1, body: 'this is great!', rating: 4,
-                        vote_score: 0)
-    it 'has attributes' do
-      expect(review.beer_id).to eq(1)
-      expect(review.body).to eq('this is great!')
-      expect(review.rating).to eq(4)
-      expect(review.vote_score).to eq(0)
-    end
-  end
+  it { should have_valid(:body).when('this is great!') }
+  it { should_not have_valid(:body).when(nil, "") }
 
-  describe 'Errors' do
-    review2 = Review.new(beer_id: ' ', body: '', rating: '', vote_score: '')
-    it 'create model with no input' do
-      expect(review2).to_not be_valid
-    end
-  end
+  it { should have_valid(:rating).when(4) }
+  it { should_not have_valid(:rating).when(nil, "") }
+
+  it { should have_valid(:vote_score).when(0) }
+  it { should_not have_valid(:vote_score).when(nil, "") }
+
+  it { should have_valid(:user_id).when(1) }
+  it { should_not have_valid(:user_id).when(nil, "") }
 end
