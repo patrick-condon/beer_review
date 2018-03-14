@@ -11,7 +11,7 @@ describe Review do
 
   describe 'Model' do
     review = Review.new(beer_id: 1, body: 'this is great!', rating: 4,
-                           vote_score: 0)
+                        vote_score: 0)
     it 'has attributes' do
       expect(review.beer_id).to eq(1)
       expect(review.body).to eq('this is great!')
