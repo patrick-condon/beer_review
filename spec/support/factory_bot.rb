@@ -1,10 +1,3 @@
-require 'factory_bot'
-
-FactoryBot.define do
-  factory :user do
-    sequence(:username) {|n| "user#{n}" }
-    sequence(:email) {|n| "user#{n}@example.com" }
-    password 'password'
-    password_confirmation 'password'
-  end
-end
+# RSpec.configure do |config|
+#  config.include FactoryBot::Syntax::Methods
+# end
