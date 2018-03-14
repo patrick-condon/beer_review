@@ -86,6 +86,9 @@ GEM
       activesupport (>= 3.0.0)
     faker (1.8.7)
       i18n (>= 0.7)
+    factory_bot_rails (4.8.2)
+      factory_bot (~> 4.8.2)
+      railties (>= 3.0.0)
     ffi (1.9.23)
     fission (0.5.0)
       CFPropertyList (~> 2.2)
@@ -422,6 +425,7 @@ DEPENDENCIES
   dotenv-rails
   factory_bot
   faker
+  factory_bot_rails (~> 4.0)
   fog
   foundation-rails (~> 5.0)
   jbuilder (~> 2.5)
