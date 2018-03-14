@@ -1,10 +1,13 @@
+# Include default devise modules. Others available are:
+# :confirmable, :lockable, :timeoutable and :omniauthable
 class User < ApplicationRecord
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable
+  has_many :reviews
 
-  mount_uploader :profile_photo, ProfilePhotoUploader
   validates :username, uniqueness: true
   validates :username, presence: true
+
+  mount_uploader :profile_photo, ProfilePhotoUploader
+
+  devise :database_authenticatable, :registerable,
+         :recoverable, :rememberable, :trackable, :validatable
 end
