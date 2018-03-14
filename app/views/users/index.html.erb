@@ -1,7 +1,7 @@
 <ul id="users-list">
   <% @users.each do |user| %>
     <li class="user-link">
-        <img src="<%= user.profile_photo %>" width="50px" height="50px"/> - <%= link_to user.email, user %>
+        <img src="<%= user.profile_photo %>" width="50px" height="50px"/> - <%= link_to user.username, user %>
     </li>
   <% end %>
 </ul>
