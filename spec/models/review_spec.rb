@@ -3,7 +3,7 @@ require 'spec_helper'
 describe Review do
   describe '.new' do
     it 'takes a review id, body, rating, and vote score' do
-      review = Review.new(beer_id: 1, body: 'this is great!',rating: 4,
+      review = Review.new(beer_id: 1, body: 'this is great!', rating: 4,
                           vote_score: 0)
       expect(review).to be_a(Review)
     end
@@ -21,7 +21,7 @@ describe Review do
   end
 
   describe 'Errors' do
-    review2 = Review.create(beer_id: ' ', body:'', rating: '', vote_score: '')
+    review2 = Review.create(beer_id: ' ', body: '', rating: '', vote_score: '')
     it 'create model with no input' do
       expect(review2).to_not be_valid
     end
