@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe Beer do
   describe '.new' do
@@ -10,7 +10,7 @@ describe Beer do
   end
 
   describe 'Model' do
-    beer = Beer.create(beer_name: 'Miller lite', brewery_name: 'Coors',
+    beer = Beer.new(beer_name: 'Miller lite', brewery_name: 'Coors',
                        beer_style: 'American Pilsner', beer_abv: 4.2)
     it 'has attributes' do
       expect(beer.beer_name).to eq('Miller lite')
@@ -21,7 +21,7 @@ describe Beer do
   end
 
   describe 'Errors' do
-    beer2 = Beer.create(beer_name: ' ', brewery_name: '', beer_style: '',
+    beer2 = Beer.new(beer_name: ' ', brewery_name: '', beer_style: '',
                         beer_abv: '')
     it 'create model with no input' do
       expect(beer2).to_not be_valid
