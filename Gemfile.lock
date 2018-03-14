@@ -84,6 +84,9 @@ GEM
     execjs (2.7.0)
     factory_bot (4.8.2)
       activesupport (>= 3.0.0)
+    factory_bot_rails (4.8.2)
+      factory_bot (~> 4.8.2)
+      railties (>= 3.0.0)
     ffi (1.9.23)
     fission (0.5.0)
       CFPropertyList (~> 2.2)
@@ -418,7 +421,7 @@ DEPENDENCIES
   coveralls
   devise
   dotenv-rails
-  factory_bot
+  factory_bot_rails (~> 4.0)
   fog
   foundation-rails (~> 5.0)
   jbuilder (~> 2.5)

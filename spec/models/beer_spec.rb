@@ -1,30 +1,16 @@
 require 'spec_helper'
+require 'rails_helper'
 
-describe Beer do
-  describe '.new' do
-    it 'takes a name, brewery name, style, and abv' do
-      beer = Beer.new(beer_name: 'Miller lite', brewery_name: 'Coors',
-                      beer_style: 'American Pilsner', beer_abv: 4.2)
-      expect(beer).to be_a(Beer)
-    end
-  end
+describe Beer, type: :model do
+  it { should have_valid(:beer_name).when('Miller lite') }
+  it { should_not have_valid(:beer_name).when(nil, '') }
 
-  describe 'Model' do
-    beer = Beer.create(beer_name: 'Miller lite', brewery_name: 'Coors',
-                       beer_style: 'American Pilsner', beer_abv: 4.2)
-    it 'has attributes' do
-      expect(beer.beer_name).to eq('Miller lite')
-      expect(beer.brewery_name).to eq('Coors')
-      expect(beer.beer_style).to eq('American Pilsner')
-      expect(beer.beer_abv).to eq(4.2)
-    end
-  end
+  it { should have_valid(:brewery_name).when('Coors') }
+  it { should_not have_valid(:brewery_name).when(nil, '') }
 
-  describe 'Errors' do
-    beer2 = Beer.create(beer_name: ' ', brewery_name: '', beer_style: '',
-                        beer_abv: '')
-    it 'create model with no input' do
-      expect(beer2).to_not be_valid
-    end
-  end
+  it { should have_valid(:beer_style).when('American Pilsner') }
+  it { should_not have_valid(:beer_style).when(nil, '') }
+
+  it { should have_valid(:beer_abv).when(4.2) }
+  it { should_not have_valid(:beer_abv).when(nil, '') }
 end
