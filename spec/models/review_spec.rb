@@ -10,7 +10,7 @@ describe Review do
   end
 
   describe 'Model' do
-    review = Review.create(beer_id: 1, body: 'this is great!', rating: 4,
+    review = Review.new(beer_id: 1, body: 'this is great!', rating: 4,
                            vote_score: 0)
     it 'has attributes' do
       expect(review.beer_id).to eq(1)
@@ -21,7 +21,7 @@ describe Review do
   end
 
   describe 'Errors' do
-    review2 = Review.create(beer_id: ' ', body: '', rating: '', vote_score: '')
+    review2 = Review.new(beer_id: ' ', body: '', rating: '', vote_score: '')
     it 'create model with no input' do
       expect(review2).to_not be_valid
     end
