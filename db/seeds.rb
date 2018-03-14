@@ -5,3 +5,15 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+require 'faker'
+
+Beer.delete_all
+
+5.times do |x|
+  Beer.create(
+    beer_name: Faker::Beer.name,
+    brewery_name: Faker::TwinPeaks.location,
+    beer_style: Faker::Beer.style,
+    beer_abv: Faker::Beer.alcohol
+  )
+end

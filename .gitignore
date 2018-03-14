@@ -25,3 +25,4 @@ yarn-debug.log*
 /coverage
 .env
 /public/uploads
+package-lock.json
