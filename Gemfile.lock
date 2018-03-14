@@ -244,6 +244,8 @@ DEPENDENCIES
   coveralls
   devise
   factory_bot_rails (~> 4.0)
+  dotenv-rails
+  fog
   foundation-rails (~> 5.0)
   jbuilder (~> 2.5)
   jquery-rails
