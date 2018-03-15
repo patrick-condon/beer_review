@@ -17,3 +17,14 @@ Beer.delete_all
     beer_abv: Faker::Beer.alcohol
   )
 end
+5.times do |x|
+  Beer.create(
+    beer_name: Faker::Beer.name,
+    brewery_name: Faker::TwinPeaks.location,
+    beer_style: Faker::Beer.style,
+    beer_abv: Faker::Beer.alcohol,
+    beer_description: Faker::RickAndMorty.quote,
+    beer_label: Faker::Avatar.image,
+    beer_active: rand(2)
+  )
+end
