@@ -37,7 +37,7 @@ RSpec.describe Api::V1::BeersController, type: :controller do
   end
   describe 'GET#show' do
     it 'should show a beer detail page' do
-      get :show, :params => { id: first_beer.id }
+      get :show, params: { id: first_beer.id }
       returned_json = JSON.parse(response.body)
 
       expect(response.status).to eq 200
