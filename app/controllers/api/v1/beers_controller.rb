@@ -1,5 +1,4 @@
 # API backend for Beers Index
-require 'pry'
 class Api::V1::BeersController < ApiController
   def index
     render json: { beers: Beer.all }
