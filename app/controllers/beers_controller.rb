@@ -5,7 +5,10 @@ class BeersController < ApplicationController
     @users = User.all
   end
 
+  def new_beer; end
+
   def show
     @beer = Beer.find(params[:id])
   end
+
 end

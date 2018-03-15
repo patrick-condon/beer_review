@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import BeerTile from '../components/BeerTile';
-
+import { Link } from 'react-router';
 
 class BeersIndexContainer extends Component {
   constructor(props){
@@ -41,6 +41,9 @@ class BeersIndexContainer extends Component {
       <div>
         <h1>Beer Index Page</h1>
         {beers}
+        <Link to={'add_new_beer'}>
+          Add New Beer
+        </Link>
       </div>
     )
   }
