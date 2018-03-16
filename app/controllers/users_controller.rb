@@ -8,10 +8,10 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
 
     if @user.profile_photo.model.profile_photo_url.nil?
-       @profile_photo =
-       'https://www.idyllwildarts.org/wp-content/uploads/2016/09/blank-profile-picture.jpg'
+      @profile_photo =
+        'https://www.idyllwildarts.org/wp-content/uploads/2016/09/blank-profile-picture.jpg'
     else
-       @profile_photo = @user.profile_photo
+      @profile_photo = @user.profile_photo
     end
   end
 end
