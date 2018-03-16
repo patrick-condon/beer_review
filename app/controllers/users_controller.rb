@@ -1,6 +1,16 @@
 # This is the controller for the user object
+require 'pry'
 class UsersController < ApplicationController
   def index
     @users = User.all
+  end
+  def show
+    @user= User.find(params[:id])
+
+    if @user.profile_photo.model.profile_photo_url === nil
+       @profile_photo = "https://www.idyllwildarts.org/wp-content/uploads/2016/09/blank-profile-picture.jpg"
+     else
+       @profile_photo = @user.profile_photo
+     end
   end
 end
