@@ -28,20 +28,21 @@ class BeerShowContainer extends Component {
   }
 
   render() {
+    let showBeer = this.state.beer
     let description = "This is a beer.";
     let active;
     let label = "https://images.pexels.com/photos/8744/mug-glass-beer.jpg?w=940&h=650&auto=compress&cs=tinysrgb";
-    if (this.state.beer.beer_active == 0) {
+    if (showBeer.beer_active == 0) {
       active = 'Beer is not currently available'
     } else if (
       this.state.beer.beer_active == 1
     ) { active = 'Beer is available'
     } else { active = 'Availabilty Unknown' }
-    if (this.state.beer.beer_description != null) {
-      description = this.state.beer.beer_description
+    if (showBeer.beer_description != '' && showBeer.beer_description != null) {
+      description = showBeer.beer_description
     }
-    if (this.state.beer.beer_label != null) {
-      label = this.state.beer.beer_label
+    if (showBeer.beer_label != '' && showBeer.beer_label != null) {
+      label = showBeer.beer_label
     }
 
     return(

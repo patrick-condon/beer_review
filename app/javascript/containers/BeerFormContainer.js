@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Redirect } from 'react-router'
+import { browserHistory } from 'react-router'
 import TextField from '../components/TextField'
 
 class BeerFormContainer extends Component {
@@ -77,7 +77,12 @@ class BeerFormContainer extends Component {
   }
   handleFormSubmit(event) {
     event.preventDefault();
-    if (Object.keys(this.state.errors).length >=0) {
+    if (
+      this.validateField(this.state.beerName, 'name') &&
+      this.validateField(this.state.breweryName, 'brewery') &&
+      this.validateField(this.state.beerStyle, 'style') &&
+      this.validateField(this.state.beerAbv, 'abv')
+    ) {
       let newBeer = {
         beerName: this.state.beerName,
         breweryName: this.state.breweryName,
@@ -96,7 +101,6 @@ class BeerFormContainer extends Component {
       headers: new Headers(),
       body: JSON.stringify(submission)
     }).then(response => {
-
         if (response.ok) {
           return response
         } else {
@@ -106,8 +110,9 @@ class BeerFormContainer extends Component {
         }
       }
     )
+    .then(response => response.json())
+    .then(body => window.location.href = `/beers/${body.id}`)
     .catch(error => console.error(`Error in fetch: ${error.message}`))
-    this.setState( { redirect: true } )
   }
 
 
