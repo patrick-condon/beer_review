@@ -32,15 +32,15 @@ class BeerFormContainer extends Component {
       this.setState({ errors: Object.assign(this.state.errors, newError) })
       return false
     } else if (Object.keys(error)[0] == 'beerAbv' && isNaN(text)) {
-      let newError = { abvNotNumber: 'ABV Must Be a Number' }
-      this.setState({ errors: Object.assign(this.state.errors, newError) })
-      return false
+        let newError = { abvNotNumber: 'ABV Must Be a Number' }
+        this.setState({ errors: Object.assign(this.state.errors, newError) })
+        return false
     } else if (Object.keys(error)[0] == 'beerAbv' && !isNaN(text)) {
-      let errorState = this.state.errors
-      delete errorState.abvNotNumber
-      delete errorState.beerAbv
-      this.setState({ errors: errorState })
-      return true
+        let errorState = this.state.errors
+        delete errorState.abvNotNumber
+        delete errorState.beerAbv
+        this.setState({ errors: errorState })
+        return true
     } else {
       let errorState = this.state.errors
       let errorKey = Object.keys(error)[0]

@@ -50,19 +50,17 @@ RSpec.describe Api::V1::BeersController, type: :controller do
   end
 end
 RSpec.describe Api::V1::BeersController, type: :controller do
-  describe "POST#create" do
-    it "creates a new Beer" do
+  describe 'POST#create' do
+    it 'creates a new Beer' do
       post_json = { beerName: 'Burning River', breweryName: 'Great Lakes',
-                    beerStyle: 'Pale Ale', beerAbv: 5.8
-                  }.to_json
+                    beerStyle: 'Pale Ale', beerAbv: 5.8 }.to_json
       prev_count = Beer.count
       post(:create, body: post_json)
       expect(Beer.count).to eq(prev_count + 1)
     end
     it 'returns the json of the newly posted beer' do
       post_json = { beerName: 'Burning River', breweryName: 'Great Lakes',
-                    beerStyle: 'Pale Ale', beerAbv: 5.8
-                  }.to_json
+                    beerStyle: 'Pale Ale', beerAbv: 5.8 }.to_json
       post(:create, body: post_json)
       returned_json = JSON.parse(response.body)
       expect(response.status).to eq 200
