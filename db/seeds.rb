@@ -8,6 +8,7 @@
 require 'faker'
 
 Beer.delete_all
+User.delete_all
 
 5.times do |x|
   Beer.create(
@@ -26,5 +27,13 @@ end
     beer_description: Faker::RickAndMorty.quote,
     beer_label: Faker::Avatar.image,
     beer_active: rand(2)
+  )
+end
+5.times do |x|
+  User.create!(
+    email: Faker::Internet.email,
+    username: Faker::Internet.user_name,
+    password: Faker::Internet.password,
+    profile_photo: Faker::Avatar.image
   )
 end
