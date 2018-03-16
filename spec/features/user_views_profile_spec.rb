@@ -1,11 +1,11 @@
 require 'rails_helper'
 
-feature 'user checks his profile page', %(
+feature 'user checks their profile page', %(
   As a signed up user
   I want to view my profile page
   So that I can see my account information) do
+    let (:user) { FactoryBot.create(:user) }
   scenario 'view account information' do
-    user = FactoryBot.create(:user)
 
     visit user_path(user)
 
