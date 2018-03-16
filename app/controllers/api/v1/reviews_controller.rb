@@ -7,7 +7,7 @@ class Api::V1::ReviewsController < ApiController
       users << review.user
     end
     respond_to do |format|
-      format.json  { render :json => { reviews: reviews, users: users }}
+      format.json  { render json: {reviews: reviews, users: users} }
     end
   end
 end

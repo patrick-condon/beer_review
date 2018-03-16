@@ -7,7 +7,7 @@ RSpec.describe Api::V1::ReviewsController, type: :controller do
       beer_style: 'Pale Ale', beer_abv: 5.8
     )
   end
-  let!(:user) { FactoryBot.create(:user), id: 1}
+  let!(:user) { FactoryBot.create(:user) id: 1}
   let!(:review) do
     Review.create(
       beer_id: first_beer.id, user_id: 1, rating: '4',
