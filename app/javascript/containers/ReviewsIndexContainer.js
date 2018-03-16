@@ -24,7 +24,6 @@ class ReviewsIndexContainer extends Component {
         this.setState({ reviews: body.reviews, users: body.users });
       })
       .catch(error => console.error(`Error in fetch: ${error.message}`));
-
   }
 
   render() {
