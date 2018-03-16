@@ -6,6 +6,6 @@ class Api::V1::ReviewsController < ApiController
     reviews.each do |review|
       users << review.user
     end
-      render json: { reviews: reviews, users: users }
+    render json: { reviews: reviews, users: users }
   end
 end

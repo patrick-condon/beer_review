@@ -8,7 +8,9 @@ RSpec.describe Api::V1::ReviewsController, type: :controller do
     )
   end
   let!(:user1) do
-    User.create( email: 'email@real.net', username: 'real-user', password: 'password')
+    User.create(
+      email: 'email@real.net', username: 'real-user', password: 'password'
+    )
   end
   let!(:review) do
     Review.create(
@@ -18,7 +20,7 @@ RSpec.describe Api::V1::ReviewsController, type: :controller do
   end
   let!(:review2) do
     Review.create(
-      beer_id: first_beer.id, user_id: user1.id , rating: 3,
+      beer_id: first_beer.id, user_id: user1.id, rating: 3,
       body: 'It was a good beer', vote_score: 0
     )
   end
