@@ -5,7 +5,7 @@ feature 'user checks his profile page', %(
   I want to view my profile page
   So that I can see my account information) do
   scenario 'view account information' do
-   user = FactoryBot.create(:user)
+  user = FactoryBot.create(:user)
 
    visit user_path(user)
 
