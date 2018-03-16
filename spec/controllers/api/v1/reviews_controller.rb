@@ -14,13 +14,12 @@ RSpec.describe Api::V1::ReviewsController, type: :controller do
       body: 'It was a beer'
     )
   end
-    let!(:review2) do
-      Review.create(
-        beer_id: first_beer.id, user_id: 1, rating: '3',
-        body: 'It was a good beer'
-      )
-    end
-
+  let!(:review2) do
+    Review.create(
+      beer_id: first_beer.id, user_id: 1, rating: '3',
+      body: 'It was a good beer'
+    )
+  end
   describe 'GET#index' do
     it 'should return a list of reviews' do
       get :index, params: { beer_id: first_beer.id }
