@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import BeerShow from '../components/BeerShow';
-
+import ReviewsIndexContainer from '../containers/ReviewsIndexContainer'
 
 class BeerShowContainer extends Component {
   constructor(props){
@@ -46,12 +46,18 @@ class BeerShowContainer extends Component {
     }
 
     return(
-      <BeerShow
-        key={this.state.beer.id} beer_name={this.state.beer.beer_name}
-        brewery_name={this.state.beer.brewery_name}
-        beer_style={this.state.beer.beer_style} beer_abv={this.state.beer.beer_abv}
-        beer_description={description} beer_active={active} beer_label={label}
-      />
+      <div>
+        <BeerShow
+          key={this.state.beer.id} beer_name={this.state.beer.beer_name}
+          brewery_name={this.state.beer.brewery_name}
+          beer_style={this.state.beer.beer_style} beer_abv={this.state.beer.beer_abv}
+          beer_description={description} beer_active={active} beer_label={label}
+        />
+        <ReviewsIndexContainer
+          beer_id={this.props.params.id}
+        />
+      </div>
+
     )
   }
 }

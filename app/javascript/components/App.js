@@ -9,11 +9,11 @@ const App = props => {
 
   return(
     <Router history={browserHistory}>
-      <Route path='/'>
-      <IndexRoute component={BeersIndexContainer} />
+      <Route path='/' >
+        <IndexRoute component={BeersIndexContainer} />
         <Route path="beers" component={BeersIndexContainer} />
-          <Route path="beers/:id" component={BeerShowContainer} />
-          <Route path="add_new_beer" component={BeerFormContainer} />
+        <Route path="beers/:id" component={BeerShowContainer} />
+        <Route path="add_new_beer" component={BeerFormContainer} />
       </Route>
     </Router>
   )
