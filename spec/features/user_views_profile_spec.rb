@@ -1,8 +1,8 @@
 require 'rails_helper'
 
 feature 'User checks their profile page' do
-  let (:user) { FactoryBot.create(:user) }
-  let (:user2) { FactoryBot.create(:user) }
+  let(:user) { FactoryBot.create(:user) }
+  let(:user2) { FactoryBot.create(:user) }
   scenario 'view account information' do
     visit new_user_session_path
     fill_in 'Email', with: user.email
