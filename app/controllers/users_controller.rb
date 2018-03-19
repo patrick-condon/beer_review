@@ -6,7 +6,17 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    assign_profile_picture
+    if current_user
+      if current_user.id == @user.id
+         assign_profile_picture
+       else
+         flash[:alert] = 'You can only view your profile'
+         redirect_to '/'
+       end
+    else
+      flash[:alert] = 'Please sign in to view profile'
+      redirect_to new_user_session_path
+    end
   end
 
   private
