@@ -8,11 +8,11 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     if current_user
       if current_user.id == @user.id
-         assign_profile_picture
-       else
-         flash[:alert] = 'You can only view your profile'
-         redirect_to '/'
-       end
+        assign_profile_picture
+      else
+        flash[:alert] = 'You can only view your profile'
+        redirect_to '/'
+      end
     else
       flash[:alert] = 'Please sign in to view profile'
       redirect_to new_user_session_path
