@@ -23,7 +23,7 @@ class BeersIndexContainer extends Component {
       .then(body => {
         this.setState({ beers: body.beers });
       })
-      .catch(error => console.error(`Error in fetch: ${error.message}`));
+      .catch(error => console.error(`Error in fetch: ${error.message}`));    
   }
 
   render() {

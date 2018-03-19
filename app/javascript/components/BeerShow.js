@@ -1,5 +1,5 @@
 import React from 'react';
-import { browserHistory } from 'react-router';
+import { Link } from 'react-router';
 
 const BeerShow = props => {
   return(
@@ -12,9 +12,9 @@ const BeerShow = props => {
           <li label="description">{props.beer_description}</li>
           <li label="availabilty">{props.beer_active}</li>
         </ul>
-        <div className="button" onClick={browserHistory.goBack}>
-        Back
-      </div>
+        <Link to='/'>
+          Back to Beers List
+        </Link>
     </div>
   )
 }

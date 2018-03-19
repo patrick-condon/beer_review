@@ -22,14 +22,18 @@ describe('BeerShowContainer', () => {
     expect(wrapper.find('BeerShow')).toBePresent()
   })
 
+  it('should display a review index container', () => {
+    expect(wrapper.find('ReviewsIndexContainer')).toBePresent()
+  })
+
   it('should render the Beer Component with correct information when state changes', () => {
     wrapper.setState({ beer: {
       beer_name: 'Burning River', brewery_name: 'Great Lakes',
       beer_style: 'Pale Ale', beer_abv: '5.8'
       }
     });
-    expect(wrapper.find('h2').text()).toBe('Burning River')
-    expect(wrapper.find('h3').text()).toBe('Great Lakes')
+    expect(wrapper.find('h2').at(0).text()).toBe('Burning River')
+    expect(wrapper.find('h3').at(0).text()).toBe('Great Lakes')
     expect(wrapper.find('[label="style"]').text()).toBe('Pale Ale')
     expect(wrapper.find('[label="abv"]').text()).toBe('5.8')
   });
