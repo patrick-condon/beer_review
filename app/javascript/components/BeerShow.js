@@ -15,6 +15,10 @@ const BeerShow = props => {
         <Link to='/'>
           Back to Beers List
         </Link>
+
+        <div className="delete-button" hidden={props.deleteButton}>
+          <button onClick={props.onDeleteClick}>Delete</button>
+        </div>
     </div>
   )
 }
