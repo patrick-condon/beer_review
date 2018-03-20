@@ -47,7 +47,7 @@ class ReviewFormContainer extends Component {
     if (
       this.validateField(this.state.rating, 'rating') &&
       this.validateField(this.state.reviewBody, 'body')
-    ) { 
+    ) {
       let formPayload = {
         rating: this.state.rating,
         body: this.state.reviewBody,
@@ -72,7 +72,7 @@ class ReviewFormContainer extends Component {
     }
 
     return(
-      <form className="new-article-form callout" onSubmit={this.handleFormSubmit}>
+      <form className="new-review-form callout" onSubmit={this.handleFormSubmit}>
         {errorDiv}
         <SelectField
           handlerFunction={this.handleRatingChange}

@@ -1,11 +1,28 @@
 import React, { Component } from 'react';
 import BeerTile from '../components/BeerTile';
+import SearchBarContainer from '../containers/SearchBarContainer';
 import { Link } from 'react-router';
 
 class BeersIndexContainer extends Component {
   constructor(props){
     super(props)
-    this.state = { beers: [] }
+    this.state = { allBeers: [], displayBeers: [], title: 'All Beers' }
+    this.search = this.search.bind(this)
+    this.backToAll = this.backToAll.bind(this)
+  }
+
+  search(submission) {
+    let beers = this.state.allBeers
+    let search = submission
+    let results = beers.filter(beer =>
+      beer.beer_name.toLowerCase().includes(search.toLowerCase()) ||
+      beer.beer_style.toLowerCase().includes(search.toLowerCase()) ||
+      beer.brewery_name.toLowerCase().includes(search.toLowerCase())
+    )
+    this.setState({title: 'Search Results', displayBeers: results})
+  }
+  backToAll() {
+    this.setState({ title: 'All Beers', displayBeers: this.state.allBeers})
   }
 
   componentDidMount() {
@@ -21,13 +38,13 @@ class BeersIndexContainer extends Component {
       })
       .then(response => response.json())
       .then(body => {
-        this.setState({ beers: body.beers });
+        this.setState({ allBeers: body.beers, displayBeers: body.beers });
       })
-      .catch(error => console.error(`Error in fetch: ${error.message}`));    
+      .catch(error => console.error(`Error in fetch: ${error.message}`));
   }
 
   render() {
-    let beers = this.state.beers.map(beer => {
+    let beers = this.state.displayBeers.map(beer => {
       return (
         <BeerTile
           key={beer.id}
@@ -37,13 +54,21 @@ class BeersIndexContainer extends Component {
         />
       )
     })
+    let link
+    if (this.state.title == 'All Beers') {
+      link = <Link to={'add_new_beer'}>Add New Beer</Link>
+    } else {
+      link = <a onClick={this.backToAll}>Back to All Beers</a>
+    }
     return(
       <div>
-        <h1>Beer Index Page</h1>
+        <h1>{this.state.title}</h1>
+        <SearchBarContainer
+          beers={this.state.beers}
+          search={this.search}
+        />
         {beers}
-        <Link to={'add_new_beer'}>
-          Add New Beer
-        </Link>
+        {link}
       </div>
     )
   }
