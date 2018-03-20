@@ -92,6 +92,7 @@ class BeerShowContainer extends Component {
         />
         <ReviewsIndexContainer
           beer_id={this.props.params.id}
+          user_id={this.state.currentUser.id}
         />
       </div>
 

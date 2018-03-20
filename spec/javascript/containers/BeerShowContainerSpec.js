@@ -14,7 +14,7 @@ describe('BeerShowContainer', () => {
 
   it('should load with the default state', () => {
     expect(wrapper.state()).toEqual({
-      beer: {}
+      beer: {}, currentUser: {}
     })
   })
 

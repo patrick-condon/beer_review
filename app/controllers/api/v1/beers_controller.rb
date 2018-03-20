@@ -7,6 +7,7 @@ class Api::V1::BeersController < ApiController
   end
 
   def show
+<<<<<<< HEAD
       beer = Beer.find(params[:id])
       user = {}
       if current_user
@@ -14,6 +15,15 @@ class Api::V1::BeersController < ApiController
       end
       render json: { beer: beer, user: user }
     end
+=======
+    beer = Beer.find(params[:id])
+    user = {}
+    if current_user
+      user = current_user
+    end
+    render json: { beer: beer, user: user }
+  end
+>>>>>>> master
 
   def create
     data = JSON.parse(request.body.read)
