@@ -5,12 +5,14 @@ import ReviewsIndexContainer from '../containers/ReviewsIndexContainer'
 class BeerShowContainer extends Component {
   constructor(props){
     super(props)
-    this.state = { beer: {} }
+    this.state = { beer: {}, currentUser: {} }
   }
 
   componentDidMount() {
     let id = this.props.params.id
-    fetch(`/api/v1/beers/${id}.json`)
+    fetch(`/api/v1/beers/${id}.json`,{
+      credentials: 'same-origin'
+    })
       .then(response => {
         if (response.ok) {
           return response;
@@ -22,7 +24,7 @@ class BeerShowContainer extends Component {
       })
       .then(response => response.json())
       .then(body => {
-        this.setState({ beer: body.beer });
+        this.setState({ beer: body.beer, currentUser: body.user });
       })
       .catch(error => console.error(`Error in fetch: ${error.message}`));
   }
@@ -55,6 +57,7 @@ class BeerShowContainer extends Component {
         />
         <ReviewsIndexContainer
           beer_id={this.props.params.id}
+          user_id={this.state.currentUser.id}
         />
       </div>
 

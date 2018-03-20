@@ -6,7 +6,11 @@ class Api::V1::BeersController < ApiController
 
   def show
     beer = Beer.find(params[:id])
-    render json: { beer: beer }
+    user = {}
+    if current_user
+      user = current_user
+    end
+    render json: { beer: beer, user: user }
   end
 
   def create
