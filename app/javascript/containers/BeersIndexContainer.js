@@ -6,9 +6,16 @@ import { Link } from 'react-router';
 class BeersIndexContainer extends Component {
   constructor(props){
     super(props)
-    this.state = { allBeers: [], displayBeers: [], title: 'All Beers' }
+    this.state = {
+      allBeers: [],
+      searchResults: [],
+      title: 'All Beers',
+      beersPerPage: 6,
+      currentPage: 1
+      }
     this.search = this.search.bind(this)
     this.backToAll = this.backToAll.bind(this)
+    this.handleClick = this.handleClick.bind(this)
   }
 
   search(submission) {
@@ -19,10 +26,15 @@ class BeersIndexContainer extends Component {
       beer.beer_style.toLowerCase().includes(search.toLowerCase()) ||
       beer.brewery_name.toLowerCase().includes(search.toLowerCase())
     )
-    this.setState({title: 'Search Results', displayBeers: results})
+    this.setState({title: 'Search Results', searchResults: results})
   }
   backToAll() {
-    this.setState({ title: 'All Beers', displayBeers: this.state.allBeers})
+    this.setState({ title: 'All Beers', searchResults: [], currentPage: 1 })
+  }
+  handleClick(event) {
+    this.setState({
+      currentPage: Number(event.target.id)
+    });
   }
 
   componentDidMount() {
@@ -44,7 +56,16 @@ class BeersIndexContainer extends Component {
   }
 
   render() {
-    let beers = this.state.displayBeers.map(beer => {
+    let beersPerPage = this.state.beersPerPage
+    let displayBeers
+    if (this.state.title == 'All Beers') {
+      let lastIndex = this.state.currentPage * beersPerPage
+      let firstIndex = lastIndex - beersPerPage
+      displayBeers = this.state.allBeers.slice(firstIndex, lastIndex)
+    } else {
+      displayBeers = this.state.searchResults
+    }
+    let beers = displayBeers.map(beer => {
       return (
         <BeerTile
           key={beer.id}
@@ -53,6 +74,22 @@ class BeersIndexContainer extends Component {
           style={beer.beer_style}
         />
       )
+    })
+    let pageNumbers = []
+    for (let i = 1; i <= Math.ceil(this.state.allBeers.length / beersPerPage); i++) {
+          pageNumbers.push(i);
+        }
+    let pages = pageNumbers.map(number => {
+      return (
+        <a onClick={this.handleClick}>
+          <li
+            key={number}
+            id={number}
+          >
+          {number}
+          </li>
+        </a>
+      );
     })
     let link
     if (this.state.title == 'All Beers') {
@@ -68,6 +105,9 @@ class BeersIndexContainer extends Component {
           search={this.search}
         />
         {beers}
+        <ul id="page-numbers">
+          {pages}
+        </ul>
         {link}
       </div>
     )

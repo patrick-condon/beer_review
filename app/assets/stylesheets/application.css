@@ -14,3 +14,14 @@
  *= require_self
  *= require foundation_and_overrides
  */
+ #page-numbers {
+   list-style: none;
+   display: flex;
+ }
+
+ #page-numbers > li {
+   margin-right: 1rem;
+   color: blue;
+   user-select: none;
+   cursor: pointer;
+ }
