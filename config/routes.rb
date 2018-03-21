@@ -2,8 +2,8 @@ Rails.application.routes.draw do
   root 'beers#index'
   devise_for :users
 
-  resources :users, only: [:index, :show, :delete, :edit]
-  resources :beers, only: [:index, :show, :delete, :edit]
+  resources :users, only: [:index, :show, :destroy, :edit]
+  resources :beers, only: [:index, :show, :destroy, :edit]
 
   get 'add_new_beer', to: 'beers#new'
 

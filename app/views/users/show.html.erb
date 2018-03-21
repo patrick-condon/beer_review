@@ -2,3 +2,5 @@
 <img src=<%= @profile_photo %> height="200" width="200"
 <br>
 <p><%= @user.email %></p>
+<div><%= button_to "Delete User", user_path, method: :delete, :data => {:confirm => 'Are you sure?' }%></div>
+<div><%= button_to 'Admin Home', users_path, method: :get %></div>

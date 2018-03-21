@@ -1,6 +1,6 @@
 # API backend for Reviews Index
 class Api::V1::ReviewsController < ApiController
-    before_action :authenticate_user!, :authorize_user, except: [:index]
+    before_action :authenticate_user!, :authorize_user, except: [:index, :create]
   def index
     reviews = Review.where(beer_id: params[:beer_id])
     users = []
@@ -26,15 +26,6 @@ class Api::V1::ReviewsController < ApiController
     end
   end
 
-  protected
-
-  def authorize_user
-    if !user_signed_in? || !current_user.admin?
-      flash[:notice] = "You do not have access to this page."
-      redirect_to root_path
-    end
-  end
-
   def create
     data = JSON.parse(request.body.read)
     new_review = Review.create!(
@@ -43,5 +34,14 @@ class Api::V1::ReviewsController < ApiController
     )
     user = User.find(data['user_id'])
     render json: { review: new_review, user: user }
+  end
+
+  protected
+
+  def authorize_user
+    if !user_signed_in? || !current_user.admin?
+      flash[:notice] = "You do not have access to this page."
+      redirect_to root_path
+    end
   end
 end

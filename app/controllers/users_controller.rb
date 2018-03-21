@@ -9,7 +9,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     if current_user
-      if current_user.id == @user.id
+      if current_user.id == @user.id || current_user.role == "admin"
         assign_profile_picture
       else
         flash[:alert] = 'You can only view your profile'
@@ -25,7 +25,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     if @user.destroy
       flash[:notice] = "Successfully deleted User."
-      redirect_to root_path
+      redirect_to '/users'
     end
   end
 
@@ -35,6 +35,8 @@ class UsersController < ApplicationController
     if !user_signed_in? || !current_user.admin?
       flash[:notice] = "You do not have access to this page."
       redirect_to root_path
+    end
+  end
 
   private
 
@@ -42,7 +44,7 @@ class UsersController < ApplicationController
     if @user.profile_photo.model.profile_photo_url.nil?
       @profile_photo =
         'https://www.idyllwildarts.org/wp-content/uploads/2016/09/blank-profile-picture.jpg'
-    else
+      else
       @profile_photo = @user.profile_photo
     end
   end

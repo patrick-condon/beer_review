@@ -28,9 +28,11 @@ describe('ReviewsIndexContainer', () => {
   it('should render the Review Component with correct information when state changes', () => {
     wrapper.setState({
       reviews: [ { id: '1', rating: '4', body: 'This is beer' } ],
-      users: [ { username: 'VincentAdultman' } ]
+      users: [ { username: 'VincentAdultman' } ],
+      currentUser: {email: "admin@admin.com", username: "Waylon_Smithers", profile_photo: "nil", role: "admin", password: "password"}
     });
     expect(wrapper.find('[className="review-tile"]').text()).toContain('VincentAdultman gives this beer a 4')
     expect(wrapper.find('p').text()).toBe('This is beer')
+    expect(wrapper.find('button')).toBePresent()
   });
 })
