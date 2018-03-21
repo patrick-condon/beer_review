@@ -12,6 +12,6 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
 
   def admin?
-    role == "admin"
+    role == 'admin'
   end
 end
