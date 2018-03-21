@@ -6,27 +6,53 @@ class BeerShowContainer extends Component {
   constructor(props){
     super(props)
     this.state = { beer: {}, currentUser: {} }
+    this.deleteBeer = this.deleteBeer.bind(this)
+    this.handleDelete = this.handleDelete.bind(this)
   }
 
+
   componentDidMount() {
-    let id = this.props.params.id
-    fetch(`/api/v1/beers/${id}.json`,{
-      credentials: 'same-origin'
+  let id = this.props.params.id
+  fetch(`/api/v1/beers/${id}.json`,{
+    credentials: 'same-origin'
+  })
+    .then(response => {
+      if (response.ok) {
+        return response;
+      } else {
+        let errorMessage = `${response.status} (${response.statusText})`,
+            error = new Error(errorMessage);
+        throw(error);
+      }
     })
-      .then(response => {
+    .then(response => response.json())
+    .then(body => {
+      this.setState({ beer: body.beer, currentUser: body.user });
+    })
+    .catch(error => console.error(`Error in fetch: ${error.message}`));
+}
+  handleDelete(event) {
+    event.preventDefault();
+      this.deleteBeer()
+  }
+  deleteBeer() {
+    let id = this.props.params.id
+    fetch(`/api/v1/beers/${id}.json`, {
+      method: 'DELETE',
+      credentials: 'same-origin'
+    }).then(response => {
         if (response.ok) {
-          return response;
+          return response
         } else {
-          let errorMessage = `${response.status} (${response.statusText})`,
-              error = new Error(errorMessage);
-          throw(error);
+          let errorMessage = `${response.status}`
+          let error = new Error(errorMessage)
+          throw(error)
         }
-      })
-      .then(response => response.json())
-      .then(body => {
-        this.setState({ beer: body.beer, currentUser: body.user });
-      })
-      .catch(error => console.error(`Error in fetch: ${error.message}`));
+      }
+    )
+    .then(response => response.json())
+    .then(body => window.location.href = `/beers/`)
+    .catch(error => console.error(`Error in fetch: ${error.message}`))
   }
 
   render() {
@@ -47,6 +73,13 @@ class BeerShowContainer extends Component {
       label = showBeer.beer_label
     }
 
+    let deleteButton;
+    if (this.state.currentUser.role != "admin") {
+      deleteButton = "hidden"
+    } else {
+      deleteButton = ""
+    }
+
     return(
       <div>
         <BeerShow
@@ -54,6 +87,8 @@ class BeerShowContainer extends Component {
           brewery_name={this.state.beer.brewery_name}
           beer_style={this.state.beer.beer_style} beer_abv={this.state.beer.beer_abv}
           beer_description={description} beer_active={active} beer_label={label}
+          onDeleteClick={this.handleDelete}
+          deleteButton={deleteButton}
         />
         <ReviewsIndexContainer
           beer_id={this.props.params.id}

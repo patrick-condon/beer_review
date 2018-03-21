@@ -16,7 +16,7 @@ class BeerFormContainer extends Component {
       errors: {}
     }
     this.handleBeerNameChange = this.handleBeerNameChange.bind(this)
-    this.validateField - this.validateField.bind(this)
+    this.validateField = this.validateField.bind(this)
     this.handleBreweryNameChange = this.handleBreweryNameChange.bind(this)
     this.handleBeerStyleChange = this.handleBeerStyleChange.bind(this)
     this.handleBeerAbvChange = this.handleBeerAbvChange.bind(this)
