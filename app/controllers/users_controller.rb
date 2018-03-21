@@ -1,6 +1,6 @@
 # This is the controller for the user object
 class UsersController < ApplicationController
-  before_action :authorize_user
+  before_action :authorize_user, except: [:show]
 
   def index
     @users = User.all
@@ -9,7 +9,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     if current_user
-      if current_user.id == @user.id || current_user.role == "admin"
+      if current_user.id == @user.id || current_user.role == 'admin'
         assign_profile_picture
       else
         flash[:alert] = 'You can only view your profile'
@@ -24,7 +24,7 @@ class UsersController < ApplicationController
   def destroy
     @user = User.find(params[:id])
     if @user.destroy
-      flash[:notice] = "Successfully deleted User."
+      flash[:notice] = 'Successfully deleted User.'
       redirect_to '/users'
     end
   end
@@ -44,7 +44,7 @@ class UsersController < ApplicationController
     if @user.profile_photo.model.profile_photo_url.nil?
       @profile_photo =
         'https://www.idyllwildarts.org/wp-content/uploads/2016/09/blank-profile-picture.jpg'
-      else
+    else
       @profile_photo = @user.profile_photo
     end
   end

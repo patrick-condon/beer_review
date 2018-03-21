@@ -1,19 +1,19 @@
 # API backend for Beers Index
 class Api::V1::BeersController < ApiController
-  before_action :authorize_user, except: [:index, :show, :create]
+  before_action :authorize_user, except: %i[index show create]
 
   def index
     render json: { beers: Beer.all }
   end
 
   def show
-      beer = Beer.find(params[:id])
-      user = {}
-      if current_user
-        user = current_user
-      end
-      render json: { beer: beer, user: user }
+    beer = Beer.find(params[:id])
+    user = {}
+    if current_user
+      user = current_user
     end
+    render json: { beer: beer, user: user }
+  end
 
   def create
     data = JSON.parse(request.body.read)
@@ -30,7 +30,7 @@ class Api::V1::BeersController < ApiController
     beer = Beer.find(params[:id])
     render json: { beers: Beer.all }
     if beer.destroy
-      flash[:notice] = "Successfully deleted beer."
+      flash[:notice] = 'Successfully deleted beer.'
     end
   end
 
@@ -38,7 +38,7 @@ class Api::V1::BeersController < ApiController
 
   def authorize_user
     if !user_signed_in? || !current_user.admin?
-      flash[:notice] = "You do not have access to this page."
+      flash[:notice] = 'You do not have access to this page.'
       redirect_to root_path
     end
   end
