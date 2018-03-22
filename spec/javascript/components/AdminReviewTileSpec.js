@@ -1,7 +1,12 @@
 import ReviewTile from '../../../app/javascript/components/ReviewTile';
 
 describe('ReviewTile', () => {
-  let wrapper;
+  let wrapper,
+  priorVotes = [],
+  upVote,
+  downVote,
+  onDeleteClick
+  ;
 
   beforeEach(() => {
     wrapper = mount(
@@ -9,7 +14,12 @@ describe('ReviewTile', () => {
         username="VincentAdultman"
         rating="4"
         body="This beer tastes funny"
-        deleteButton=""
+        voteScore='3'
+        priorVotes={priorVotes}
+        upVote={upVote}
+        downVote={downVote}
+        onDeleteClick={onDeleteClick}
+        deleteButton=''
       />
     )
   });
