@@ -14,6 +14,7 @@ const App = props => {
         <Route path="beers" component={BeersIndexContainer} />
         <Route path="beers/:id" component={BeerShowContainer} />
         <Route path="add_new_beer" component={BeerFormContainer} />
+        <Route path="beers/:id/edit" component={BeerFormContainer} />
       </Route>
     </Router>
   )

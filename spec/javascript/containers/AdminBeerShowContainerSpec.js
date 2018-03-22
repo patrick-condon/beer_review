@@ -30,4 +30,10 @@ describe('BeerShowContainer', () => {
     });
     expect(wrapper.find('button')).toBePresent()
   });
+
+  it('should render the edit button when state changes', () => {
+    wrapper.setState({ currentUser: {email: "admin@admin.com", username: "Waylon_Smithers", profile_photo: "nil", role: "admin", password: "password"}
+    });
+    expect(wrapper.find('Link')).toBePresent()
+  });
 })

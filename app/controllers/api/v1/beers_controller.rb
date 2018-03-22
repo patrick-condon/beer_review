@@ -1,10 +1,10 @@
 # API backend for Beers Index
 class Api::V1::BeersController < ApiController
-  before_action :authorize_user, except: %i[index show create]
+  before_action :authorize_user, except: %i[index show create update]
   before_action :authenticate_user!, except: %i[index show]
 
   def index
-    render json: { beers: Beer.all }
+    render json: { beers: Beer.all.order(:created_at).reverse }
   end
 
   def show
@@ -28,6 +28,15 @@ class Api::V1::BeersController < ApiController
     render json: { beers: Beer.all }
     if beer.destroy
       flash[:notice] = 'Successfully deleted beer.'
+    end
+  end
+
+  def update
+    beer = Beer.find(params[:id])
+    if beer.update(beer_params)
+      render json: { beer: beer, id: params[:id] }
+    else
+      render json: { errors: beer.errors.full_messages }
     end
   end
 
