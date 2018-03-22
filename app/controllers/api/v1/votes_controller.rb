@@ -8,7 +8,6 @@ class Api::V1::VotesController < ApiController
     if current_user
       user = current_user
       vote = Vote.new(vote_params)
-      vote.user = user
       prior_vote = Vote.where('user_id = ? AND review_id = ?',
                               vote.user_id, vote.review_id)[0]
       if prior_vote
@@ -32,7 +31,7 @@ class Api::V1::VotesController < ApiController
         reviews = Review.where(beer_id: vote.beer_id).order(:created_at).reverse
         users = get_users(reviews)
         prior_votes = Vote.where('user_id = ? AND beer_id = ?',
-                                 user.id, vote.beer_id)
+                                 vote.user_id, vote.beer_id)
         render json: { reviews: reviews, users: users,
                        prior_votes: prior_votes, user: user }
       end
@@ -43,7 +42,7 @@ class Api::V1::VotesController < ApiController
 
   def vote_params
     params.require(:vote).permit(
-      :value, :review_id, :beer_id
+      :value, :review_id, :beer_id, :user_id
     )
   end
 
