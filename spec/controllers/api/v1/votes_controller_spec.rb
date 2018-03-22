@@ -27,28 +27,5 @@ RSpec.describe Api::V1::VotesController, type: :controller do
                               vote: post_json })
       expect(response).to redirect_to(new_user_session_path)
     end
-    it 'creates a new vote' do
-      sign_in
-      prev_count = Vote.count
-      post_json = {value: 1, review_id: review.id,
-                   beer_id: first_beer.id}
-      post(:create, params: { beer_id: first_beer.id, review_id: review.id,
-                              vote: post_json })
-      expect(Vote.count).to eq(prev_count + 1)
-    end
-    # it 'returns the json of the newly posted review and user' do
-    #   sign_in
-    #   post_json = { rating: 4.5, beer_id: first_beer.id, user_id: user1.id,
-    #                 vote_score: 0, body: 'It was beer' }
-    #   post(:create, params: {beer_id: first_beer.id}, body: post_json)
-    #   returned_json = JSON.parse(response.body)
-    #   expect(response.status).to eq 200
-    #   expect(response.content_type).to eq('application/json')
-    #   expect(returned_json).to be_kind_of(Hash)
-    #   expect(returned_json['review']['beer_id']).to eq first_beer.id
-    #   expect(returned_json['review']['rating']).to eq 4.5
-    #   expect(returned_json['review']['body']).to eq 'It was beer'
-    #   expect(returned_json['user']['username']).to eq user1.username
-    # end
   end
 end
