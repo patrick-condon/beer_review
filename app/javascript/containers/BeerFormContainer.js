@@ -6,6 +6,8 @@ class BeerFormContainer extends Component {
   constructor(props) {
     super(props)
     this.state = {
+      title: 'Add New Beer',
+      buttonText: 'Add Beer!',
       beerName: '',
       breweryName: '',
       beerStyle: '',
@@ -78,27 +80,94 @@ class BeerFormContainer extends Component {
   handleFormSubmit(event) {
     event.preventDefault();
     if (
-      this.validateField(this.state.beerName, 'name') &&
-      this.validateField(this.state.breweryName, 'brewery') &&
-      this.validateField(this.state.beerStyle, 'style') &&
-      this.validateField(this.state.beerAbv, 'abv')
+      this.validateField(this.state.beerName, { beerName: 'Beer Name may not be blank' }) &&
+      this.validateField(this.state.breweryName, { breweryName: 'Brewery Name may not be blank' }) &&
+      this.validateField(this.state.beerStyle, { beerStyle: 'Beer Style may not be blank' }) &&
+      this.validateField(this.state.beerAbv, { beerAbv: 'Beer ABV may not be blank' })
     ) {
-      let newBeer = {
-        beerName: this.state.beerName,
-        breweryName: this.state.breweryName,
-        beerStyle: this.state.beerStyle,
-        beerDescription: this.state.beerDescription,
-        beerAbv: this.state.beerAbv,
-        beerActive: this.state.beerActive,
-        beerLabel: this.state.beerLabel
+      let newBeer = { beer: {
+        beer_name: this.state.beerName,
+        brewery_name: this.state.breweryName,
+        beer_style: this.state.beerStyle,
+        beer_description: this.state.beerDescription,
+        beer_abv: this.state.beerAbv,
+        beer_active: this.state.beerActive,
+        beer_label: this.state.beerLabel
+      } }
+      if (this.props.params.id) {
+        this.editBeer(newBeer)
+      } else {
+        this.addNewBeer(newBeer)
       }
-      this.addNewBeer(newBeer)
     }
   }
+
+  componentDidMount() {
+    if (this.props.params.id) {
+      let id = this.props.params.id
+      fetch(`/api/v1/beers/${id}.json`,{
+        credentials: 'same-origin'
+      })
+        .then(response => {
+          if (response.ok) {
+            return response;
+          } else {
+            let errorMessage = `${response.status} (${response.statusText})`,
+                error = new Error(errorMessage);
+            throw(error);
+          }
+        })
+        .then(response => response.json())
+        .then(body => {
+          this.setState({
+          title: 'Edit Beer',
+          buttonText: 'Submit Changes',
+          beerName: body.beer.beer_name,
+          breweryName: body.beer.brewery_name,
+          beerStyle: body.beer.beer_style,
+          beerDescription: body.beer.beer_description,
+          beerAbv: body.beer.beer_abv,
+          beerActive: body.beer.beer_active,
+          beerLabel: body.beer.beer_label
+          });
+        })
+        .catch(error => console.error(`Error in fetch: ${error.message}`));
+    }
+  }
+
+  editBeer(submission) {
+    let id = this.props.params.id
+    fetch(`/api/v1/beers/${id}`, {
+      method: 'PATCH',
+      credentials: 'same-origin',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      body: JSON.stringify(submission)
+    }).then(response => {
+        if (response.ok) {
+          return response
+        } else {
+          let errorMessage = `${response.status}`
+          let error = new Error(errorMessage)
+          throw(error)
+        }
+      }
+    )
+    .then(response => response.json())
+    .then(body => window.location.href = `/beers/${body.id}`)
+    .catch(error => console.error(`Error in fetch: ${error.message}`))
+  }
+
   addNewBeer(submission) {
     fetch("/api/v1/beers", {
       method: 'post',
-      headers: new Headers(),
+      credentials: 'same-origin',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
       body: JSON.stringify(submission)
     }).then(response => {
         if (response.ok) {
@@ -125,8 +194,11 @@ class BeerFormContainer extends Component {
       })
       errorDiv = <div className="callout alert">{errorItems}</div>
     }
+    let title = this.state.title
+    let buttonText = this.state.buttonText
     return(
       <form className="new-beer-form" onSubmit={this.handleFormSubmit}>
+        <h2>{title}</h2>
         {errorDiv}
         <TextField
           content={this.state.beerName}
@@ -168,7 +240,7 @@ class BeerFormContainer extends Component {
           <input type="radio" name="beer-active" value="1"  onChange={this.handleBeerActiveChange}/>Yes
           <input type="radio" name="beer-active" value="0"  onChange={this.handleBeerActiveChange}/>No
         </label>
-        <input type="submit" value="Add Beer!" />
+        <input type="submit" value={buttonText} />
       </form>
     )
   }

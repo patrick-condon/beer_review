@@ -1,14 +1,28 @@
 import ReviewTile from '../../../app/javascript/components/ReviewTile';
 
 describe('ReviewTile', () => {
-  let wrapper;
+  let wrapper,
+  priorVotes = [],
+  upVote,
+  downVote,
+  onDeleteClick
+  ;
 
   beforeEach(() => {
+    upVote = jasmine.createSpy('upVote spy')
+    downVote = jasmine.createSpy('downVote spy')
+    onDeleteClick = jasmine.createSpy('onDeleteClick spy')
     wrapper = mount(
       <ReviewTile
         username="VincentAdultman"
         rating="4"
         body="This beer tastes funny"
+        voteScore='3'
+        priorVotes={priorVotes}
+        upVote={upVote}
+        downVote={downVote}
+        onDeleteClick={onDeleteClick}
+        deleteButton=''
       />
     )
   });
