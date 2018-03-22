@@ -46,8 +46,10 @@ class SearchBarContainer extends Component {
       errorDiv = <div className="callout alert">{errorItems}</div>
     }
     return (
-      <form onSubmit={this.handleFormSubmit}>
+      <div className="search">
+      <form id="search" onSubmit={this.handleFormSubmit}>
         {errorDiv}
+        <span className="text-field">
         <TextField
           content={this.state.searchText}
           label=""
@@ -55,8 +57,10 @@ class SearchBarContainer extends Component {
           type="text"
           handleChange={this.handleSearchChange}
         />
+      </span>
         <input className="button" id="submit" type="submit" value="Search"/>
       </form>
+    </div>
     )
   }
 }

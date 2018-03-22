@@ -15,7 +15,7 @@ describe('BeersIndexContainer', () => {
     expect(wrapper.state()).toEqual({
       allBeers: [],
       searchResults: [],
-      title: 'All Beers',
+      title: 'Welcome to the Belcher Report',
       beersPerPage: 6,
       currentPage: 1    })
   })
@@ -46,25 +46,5 @@ describe('BeersIndexContainer', () => {
                         title: 'Search Results', beersPerPage: 6, currentPage: 1
     })
     expect(wrapper.find('h1').text()).toBe('Search Results')
-  })
-  it('implements pagination to show however many beers specified', () => {
-    wrapper.setState({ allBeers: [ { beer_name: 'A Beer', brewery_name: 'A Brewery',
-                                     beer_style: 'Style', beer_abv: 4 },
-                                   { beer_name: 'New Beer', brewery_name: 'New Brewery',
-                                     beer_style: 'New Style', beer_abv: 5 }
-                                  ], beersPerPage: 1 })
-    expect(wrapper.find('li').at(0).text()).toBe('A Beer: Style')
-    expect(wrapper.find('li').at(1).text()).not.toBe('New Beer: New Style')
-  })
-  it('shows the next page when clicked', () => {
-    wrapper.setState({ allBeers: [ { beer_name: 'A Beer', brewery_name: 'A Brewery',
-                                     beer_style: 'Style', beer_abv: 4 },
-                                   { beer_name: 'New Beer', brewery_name: 'New Brewery',
-                                     beer_style: 'New Style', beer_abv: 5 }
-                                  ], beersPerPage: 1 })
-    expect(wrapper.find('li').at(0).text()).toBe('A Beer: Style')
-    expect(wrapper.find('li').at(1).text()).not.toBe('New Beer: New Style')
-    wrapper.find('li').at(2).simulate('click')
-    expect(wrapper.find('li').at(0).text()).toBe('New Beer: New Style')
   })
 })

@@ -14,10 +14,10 @@
  *= require_self
  *= require foundation_and_overrides
  */
- div {
-   margin-left: 1rem;
-   margin-right: 1rem;
- }
+
+@import url('https://fonts.googleapis.com/css?family=Teko');
+@import url('https://fonts.googleapis.com/css?family=Holtwood+One+SC|Volkhov');
+
  #page-numbers {
    list-style: none;
    display: flex;
@@ -29,6 +29,397 @@
    user-select: none;
    cursor: pointer;
  }
+
+ ul#page-numbers {
+   width: 75px;
+   margin-right: auto;
+   margin-left: auto;
+   text-align: center;
+ }
+
+ ul#page-numbers a{
+   font-size: 36px;
+   margin-right: 15px;
+   text-decoration: underline;
+   margin-right: auto;
+   margin-left: auto;
+   text-align: center;
+ }
+
+ nav.top-bar {
+   /* background-image: url('https://previews.123rf.com/images/denisovd/denisovd1203/denisovd120301248/12702083-close-up-of-beer-bubbles.jpg'); */
+   background-image: url('https://milesforstyle.com/wp-content/uploads/2015/02/beer-bubbles.jpg');
+   background-repeat: no-repeat;
+   background-attachment: fixed;
+   background-size: cover;
+   height: 68px;
+   position: sticky;
+ }
+
+ li.name {
+   padding:12px;
+ }
+
+ div.beer-show {
+   text-align: center;
+   list-style-type: none;
+   box-shadow: 0 4px 8px 2px rgba(0,0,0,0.6);
+   transition: 0.3s;
+   margin-top: 20px;
+   width: 600px;
+   margin-left: auto;
+   margin-right: auto;
+   margin-bottom: 75px;
+ }
+
+ img#beer-img {
+  margin-top: 20px;
+ }
+
+ ul#beer-show {
+   list-style-type: none;
+   font-size: 20px;
+   text-align: left;
+   width: 200px;
+   margin-right: auto;
+   margin-left: auto;
+ }
+
+ h2#beer-show {
+   margin-bottom: 0px;
+ }
+
+ div.user-show {
+   text-align: center;
+ }
+
+ div.user-show h2 {
+   margin-bottom: 10px;
+ }
+
+ div.user-show p{
+   font-size: 26px;
+   margin-top: 20px;
+ }
+
+  ul#users-list {
+   list-style-type: none;
+   margin-left: 30px;
+ }
+
+ div.edit-user {
+   margin-left: 100px;
+   list-style-type: none;
+ }
+
+ input#user_username {
+   width: 500px;
+   background-color: #E5EAF0;
+ }
+
+ input#user_email {
+   width: 500px;
+   background-color: #E5EAF0;
+ }
+
+ input#user_password {
+   width: 500px;
+   margin-bottom: -8px;
+   background-color: #E5EAF0;
+ }
+
+ input#user_password_confirmation {
+   width: 500px;
+   margin-top: -15px;
+   background-color: #E5EAF0;
+ }
+
+ input#user_current_password {
+   width: 500px;
+   background-color: #E5EAF0;
+ }
+
+ h5#cancel {
+   padding-top: 25px;
+ }
+
+ label {
+  font-size: 28px;
+  margin-bottom: -4px;
+  width: 203px;
+  margin-right: auto;
+  align-items: center;
+ }
+
+ i {
+   font-size: 16px;
+ }
+
+ div.field {
+ }
+
+ div.buttons {
+   text-align: center;
+   margin-top: 100px;
+   margin-bottom: 50px;
+ }
+
+ body {
+   color: #45381C;
+   font-family: 'Teko', sans-serif;
+   background-color: #FFF7E0;
+ }
+
+ form#edit_user.edit_user {
+   color: #066CB2;
+   margin-left: 10px;
+ }
+
+ li.user-link {
+   font-size: 28px;
+ }
+
+ div.admin-index {
+   color: #45381C;
+   margin-left: 80px;
+   margin-top: 6px;
+ }
+
+ div#delete {
+   margin-bottom: 20px;
+ }
+
+ div#admin-home {
+   margin-bottom: 75px;
+ }
+
+ .top-bar-section li:not(.has-form) a:not(.button) {
+    background: #333333;
+    line-height: 2.8125rem;
+    padding: 12px 0.9375rem;
+    font-family: 'Volkhov', serif;
+ }
+
+ .top-bar-section ul li > a {
+   font-family: inherit;
+   background-color: #45381C;
+   color: #FFFFFF;
+   display: block;
+   font-size: 0.8125rem;
+   font-weight: normal;
+   padding-left: 0.9375rem;
+   padding: 12px 0 12px 0.9375rem;
+   text-transform: none;
+   width: 100%;
+   font-family: 'Volkhov', serif;
+}
+
+.top-bar .name h1 a, span a {
+  font-size: 30px;
+  color: #FFFFFF;
+  font-family: 'Holtwood One SC', serif;
+ }
+
+.top-bar-section li:not(.has-form) a:not(.button){
+  background: #FE9A06;
+  transition: background-color 300ms ease-out;
+ }
+
+.top-bar-section li:not(.has-form) a:not(.button):hover {
+  background: #2DB5A0;
+  transition: background-color 300ms ease-out;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #45381C;
+  font-family: 'Teko', sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  line-height: 1.4;
+  margin-bottom: 0.5rem;
+  margin-top: 0.2rem;
+  text-rendering: optimizeLegibility;
+  display: inline-block;
+}
+
+a {
+  color: #45381C;
+  line-height: inherit;
+  text-decoration: none;
+}
+
+h2 {
+  margin-bottom: 40px;
+  text-shadow: 4px 3px 2px rgba(150, 150, 150, 0.72);
+}
+
+div#beer-index {
+  list-style-type: none;
+}
+
+
+input#submit.button {
+  display: inline-block;
+  text-align: center;
+  margin: 0;
+  height: 50px;
+}
+
+.text-field label input {
+  height: 49px;
+  font-size: 30px;
+  width: 105%;
+}
+
+input#search {
+  display: inline-block;
+}
+
+.button {
+  background-color: #FE9A06;
+  transition: background-color 300ms ease-out;
+}
+
+.button:hover {
+  background-color: #2DB5A0;
+  transition: background-color 300ms ease-out;
+}
+
+.button {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    border-radius: 0;
+    border-style: solid;
+    border-width: 0;
+    cursor: pointer;
+    font-weight: normal;
+    line-height: normal;
+    margin: 0 0 1.25rem;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    padding: 1rem 2rem 1.0625rem 2rem;
+    font-size: 1rem;
+    background-color: #FE9A06;
+    border-color: #05568e;
+    color: #FFFFFF;
+    transition: background-color 300ms ease-out;
+}
+
+div#beer-card {
+    /* Add shadows to create the "card" effect */
+  display: inline-block;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+  min-width: 300px;
+  max-width: 400px;
+  margin: 10px;
+  text-align: center;
+}
+
+/* On mouse-over, add a deeper shadow */
+div#beer-card:hover {
+  box-shadow: 0 12px 24px 6px rgba(0,0,0,0.6);
+}
+
+/* Add some padding inside the card container */
+div#container {
+    padding: 2px 16px;
+}
+
+/* Review Form */
+
+form.new-review-form.callout {
+  text-align: center;
+}
+
+div#review-form {
+  text-align: center;
+  box-shadow: 0 4px 8px 2px rgba(0,0,0,0.6);
+  transition: 0.3s;
+  width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-bottom: 20px;
+}
+
+h2#review-index {
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+h2#review-form {
+  padding-top: 10px;
+}
+
+form.new-review-form.callout > label {
+ font-size: 28px;
+ margin-bottom: -4px;
+ width: 300px;
+ margin-right: auto;
+ margin-left: auto;
+ align-items: center;
+}
+
+div#review-index {
+  box-shadow: 0 4px 8px 2px rgba(0,0,0,0.6);
+  transition: 0.3s;
+  width: 600px;
+  height: auto;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 50px;
+  text-align: center;
+  margin-top: 75px;
+  padding-bottom: 30px;
+  padding-top: 10px;
+}
+
+h3#review-tile {
+  padding-top: 10px;
+}
+
+form.new-review-form.callout > label select{
+  width: 300px;
+  margin-left: auto;
+  margin-left: auto;
+}
+
+div.review-tile {
+  margin-bottom: 50px;
+}
+
+div#beers_index h1 {
+  text-align: left;
+  margin-left: 15px;
+  margin-bottom: 15px;
+  height: 90px;
+  width: 401px;
+}
+
+.text-field {
+  display: inline-block;
+  margin-bottom: 5px;
+  vertical-align: top;
+}
+
+.search {
+  display: inline-block;
+  width: 37%;
+  position: relative;
+  right:-25%;
+  float: right;
+  margin-right: -35px;
+  white-space: nowrap;
+}
+
+.index-container {
+  max-width: 1000px;
+  text-align: center;
+  margin: 0 auto;
+}
+
  .review-tile {
    border: 1px solid black;
    padding: .5rem;
@@ -40,3 +431,4 @@
  .clicked {
    border: 1.5px solid black;
  }
+

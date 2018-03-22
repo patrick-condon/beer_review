@@ -12,7 +12,7 @@ const ReviewTile = props => {
   }
   return(
     <div className="review-tile">
-      <h3>{props.username} gives this beer a {props.rating}</h3>
+      <h3 id="review-tile">{props.username} gives this beer a {props.rating}</h3>
       <p>{props.body}</p>
       <div className="vote-score">
         <button onClick={props.upVote} className={upClass}>

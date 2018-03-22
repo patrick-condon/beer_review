@@ -14,7 +14,7 @@ describe('BeerTile', () => {
   });
 
   it('renders a list tag with the beer name', () => {
-    expect(wrapper.find('li').text()).toBe("Murphy's Stout: Dry Stout")
+    expect(wrapper.find('h3').text()).toBe("Murphy's Stout")
   })
 
   it('contains a link to the beer page', () => {

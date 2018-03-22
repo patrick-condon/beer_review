@@ -156,14 +156,18 @@ class ReviewsIndexContainer extends Component {
 
     return(
       <div>
-        <h3>Add a Review</h3>
+        <div id="review-form">
+        <h2 id="review-form">Add a Review</h2>
         <ReviewFormContainer
           beer_id={this.props.beer_id}
           user_id={this.props.user_id}
           addNewReview={this.addNewReview}
         />
-        <h2>Reviews</h2>
-        {reviews}
+        </div>
+        <div id="review-index">
+          <h2 id="review-index">Reviews</h2>
+          {reviews}
+        </div>
       </div>
     )
   }

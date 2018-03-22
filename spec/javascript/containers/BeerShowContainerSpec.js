@@ -34,8 +34,8 @@ describe('BeerShowContainer', () => {
     });
     expect(wrapper.find('h2').at(0).text()).toBe('Burning River')
     expect(wrapper.find('h3').at(0).text()).toBe('Great Lakes')
-    expect(wrapper.find('[label="style"]').text()).toBe('Pale Ale')
-    expect(wrapper.find('[label="abv"]').text()).toBe('5.8')
+    expect(wrapper.find('[label="style"]').text()).toBe('Style: Pale Ale')
+    expect(wrapper.find('[label="abv"]').text()).toBe('ABV: 5.8')
   });
   it('should populate empty fields', () => {
     wrapper.setState({ beer: {
@@ -43,7 +43,7 @@ describe('BeerShowContainer', () => {
       beer_style: 'Pale Ale', beer_abv: '5.8'
       }
     });
-    expect(wrapper.find('[label="description"]').text()).toBe("This is a beer.")
-    expect(wrapper.find('[label="availabilty"]').text()).toBe('Availabilty Unknown')
+    expect(wrapper.find('[label="description"]').text()).toBe("Description: This is a beer.")
+    expect(wrapper.find('[label="availabilty"]').text()).toBe('Availability: Availabilty Unknown')
   })
 })

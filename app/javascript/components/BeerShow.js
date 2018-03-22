@@ -4,13 +4,15 @@ import { Link } from 'react-router';
 const BeerShow = props => {
   return(
     <div className="beer-show">
-      <img src={props.beer_label} height="200px" width="200px"/><h2>{props.beer_name}</h2>
-      <h3>{props.brewery_name}</h3>
-        <ul>
-          <li label="style">{props.beer_style}</li>
-          <li label="abv">{props.beer_abv}</li>
-          <li label="description">{props.beer_description}</li>
-          <li label="availabilty">{props.beer_active}</li>
+      <img id="beer-img" src={props.beer_label} height="200px" width="200px"/><h2 id="beer-show">{props.beer_name}</h2>
+      <h6>by</h6>
+      <h3><strong>{props.brewery_name}</strong></h3>
+
+        <ul id="beer-show">
+          <li label="style"><strong>Style:</strong> {props.beer_style}</li>
+          <li label="abv"><strong>ABV: </strong>{props.beer_abv}</li>
+          <li label="description"><strong>Description: </strong>{props.beer_description}</li>
+          <li label="availabilty"><strong>Availability: </strong>{props.beer_active}</li>
         </ul>
         <Link to='/'>
           Back to Beers List
