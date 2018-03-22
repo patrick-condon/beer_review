@@ -78,27 +78,32 @@ class BeerFormContainer extends Component {
   handleFormSubmit(event) {
     event.preventDefault();
     if (
-      this.validateField(this.state.beerName, 'name') &&
-      this.validateField(this.state.breweryName, 'brewery') &&
-      this.validateField(this.state.beerStyle, 'style') &&
-      this.validateField(this.state.beerAbv, 'abv')
+      this.validateField(this.state.beerName, { beerName: 'Beer Name may not be blank' }) &&
+      this.validateField(this.state.breweryName, { breweryName: 'Brewery Name may not be blank' }) &&
+      this.validateField(this.state.beerStyle, { beerStyle: 'Beer Style may not be blank' }) &&
+      this.validateField(this.state.beerAbv, { beerAbv: 'Beer ABV may not be blank' })
     ) {
-      let newBeer = {
-        beerName: this.state.beerName,
-        breweryName: this.state.breweryName,
-        beerStyle: this.state.beerStyle,
-        beerDescription: this.state.beerDescription,
-        beerAbv: this.state.beerAbv,
-        beerActive: this.state.beerActive,
-        beerLabel: this.state.beerLabel
-      }
+      let newBeer = { beer: {
+        beer_name: this.state.beerName,
+        brewery_name: this.state.breweryName,
+        beer_style: this.state.beerStyle,
+        beer_description: this.state.beerDescription,
+        beer_abv: this.state.beerAbv,
+        beer_active: this.state.beerActive,
+        beer_label: this.state.beerLabel
+      } }
+      debugger
       this.addNewBeer(newBeer)
     }
   }
   addNewBeer(submission) {
     fetch("/api/v1/beers", {
       method: 'post',
-      headers: new Headers(),
+      credentials: 'same-origin',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
       body: JSON.stringify(submission)
     }).then(response => {
         if (response.ok) {

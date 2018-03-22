@@ -33,6 +33,7 @@ class SearchBarContainer extends Component {
     ) {
       let formPayload = this.state.searchText
       this.props.search(formPayload);
+      this.setState({ searchText: '' })
     }
   }
   render() {

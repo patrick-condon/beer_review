@@ -45,16 +45,16 @@ class ReviewFormContainer extends Component {
   handleFormSubmit(event) {
     event.preventDefault();
     if (
-      this.validateField(this.state.rating, 'rating') &&
-      this.validateField(this.state.reviewBody, 'body')
+      this.validateField(this.state.rating, {rating: 'Rating must be given'}) &&
+      this.validateField(this.state.reviewBody, {body: 'Review must be given'})
     ) {
-      let formPayload = {
+      let formPayload = { review: {
         rating: this.state.rating,
         body: this.state.reviewBody,
         beer_id: this.props.beer_id,
         user_id: this.props.user_id,
         vote_score: 0
-      };
+      } };
       this.props.addNewReview(formPayload);
       this.setState( {rating: '', reviewBody: ''} )
     }

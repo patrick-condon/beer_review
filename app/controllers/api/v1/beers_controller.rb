@@ -1,6 +1,7 @@
 # API backend for Beers Index
 class Api::V1::BeersController < ApiController
   before_action :authorize_user, except: %i[index show create]
+  before_action :authenticate_user!, except: %i[index show]
 
   def index
     render json: { beers: Beer.all }
@@ -16,14 +17,10 @@ class Api::V1::BeersController < ApiController
   end
 
   def create
-    data = JSON.parse(request.body.read)
-    new_beer = Beer.create!(
-      beer_name: data['beerName'], brewery_name: data['breweryName'],
-      beer_style: data['beerStyle'], beer_abv: data['beerAbv'],
-      beer_description: data['beerDescription'],
-      beer_active: data['beerActive'], beer_label: data['beerLabel']
-    )
-    render json: new_beer
+    if current_user
+      new_beer = Beer.create!(beer_params)
+      render json: new_beer
+    end
   end
 
   def destroy
@@ -41,5 +38,12 @@ class Api::V1::BeersController < ApiController
       flash[:notice] = 'You do not have access to this page.'
       redirect_to root_path
     end
+  end
+
+  def beer_params
+    params.require(:beer).permit(
+      :beer_name, :brewery_name, :beer_style, :beer_description,
+      :beer_abv, :beer_active, :beer_label
+    )
   end
 end

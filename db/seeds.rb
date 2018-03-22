@@ -9,9 +9,12 @@ require 'faker'
 
 Beer.delete_all
 User.delete_all
+Review.delete_all
+Vote.delete_all
 beers = []
 users = []
-5.times do |x|
+reviews = []
+2.times do |x|
   beers << Beer.create(
     beer_name: Faker::Beer.name,
     brewery_name: Faker::TwinPeaks.location,
@@ -19,13 +22,13 @@ users = []
     beer_abv: Faker::Beer.alcohol
   )
 end
-5.times do |x|
+8.times do |x|
   beers << Beer.create(
     beer_name: Faker::Beer.name,
     brewery_name: Faker::TwinPeaks.location,
     beer_style: Faker::Beer.style,
     beer_abv: Faker::Beer.alcohol,
-    beer_description: Faker::Seinfeld.quote,
+    beer_description: Faker::SiliconValley.quote,
     beer_label: Faker::Avatar.image,
     beer_active: rand(2)
   )
@@ -38,7 +41,7 @@ end
   )
 end
 20.times do |x|
-  Review.create(
+  reviews << Review.create(
     beer_id: beers[rand(10)].id,
     body: Faker::RickAndMorty.quote,
     rating: rand(5) + 1,
@@ -46,3 +49,11 @@ end
     user_id: users[rand(5)].id
   )
 end
+# 25.times do |x|
+#   Vote.create(
+#     beer_id: beers[rand(10)].id,
+#     user_id: users[rand(5)].id,
+#     review_id: reviews[rand(20)].id,
+#     value: rand(2) -1
+#   )
+# end
