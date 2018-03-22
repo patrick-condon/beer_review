@@ -34,7 +34,8 @@ RSpec.describe Api::V1::VotesController, type: :controller do
       prev_count = Vote.count
       post(:create, params: { beer_id: first_beer.id, review_id: review.id,
                               vote: post_json })
-      expect(Vote.count).to eq(prev_count + 1)    end
+      expect(Vote.count).to eq(prev_count + 1)
+    end
   end
   it 'returns the json of the newly posted vote and review' do
     sign_in
