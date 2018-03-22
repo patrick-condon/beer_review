@@ -57,15 +57,20 @@ class BeersIndexContainer extends Component {
 
   render() {
     let beersPerPage = this.state.beersPerPage
-    let displayBeers
+    let displayBeers, lastIndex, firstIndex, pageBeers;
     if (this.state.title == 'All Beers') {
-      let lastIndex = this.state.currentPage * beersPerPage
-      let firstIndex = lastIndex - beersPerPage
-      displayBeers = this.state.allBeers.slice(firstIndex, lastIndex)
+      displayBeers = this.state.allBeers
     } else {
       displayBeers = this.state.searchResults
     }
-    let beers = displayBeers.map(beer => {
+    if (displayBeers.length > beersPerPage) {
+      lastIndex = this.state.currentPage * beersPerPage
+      firstIndex = lastIndex - beersPerPage
+      pageBeers = displayBeers.slice(firstIndex, lastIndex)
+    } else {
+      pageBeers = displayBeers
+    }
+    let beers = pageBeers.map(beer => {
       return (
         <BeerTile
           key={beer.id}
@@ -76,7 +81,7 @@ class BeersIndexContainer extends Component {
       )
     })
     let pageNumbers = []
-    for (let i = 1; i <= Math.ceil(this.state.allBeers.length / beersPerPage); i++) {
+    for (let i = 1; i <= Math.ceil(displayBeers.length / beersPerPage); i++) {
           pageNumbers.push(i);
         }
     let pages = pageNumbers.map(number => {

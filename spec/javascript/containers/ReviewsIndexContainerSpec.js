@@ -10,10 +10,10 @@ describe('ReviewsIndexContainer', () => {
       params={{beer_id: 1}}
      />)
   })
-
+  
   it('should load with the default state', () => {
     expect(wrapper.state()).toEqual({
-      reviews: [], users: [], currentUser: {}
+      reviews: [], users: [], priorVotes: [], currentUser: {}
     })
   })
 

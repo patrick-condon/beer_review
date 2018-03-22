@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import BeerShow from '../components/BeerShow';
 import ReviewsIndexContainer from '../containers/ReviewsIndexContainer'
+import BeerFormContainer from '../containers/BeerFormContainer'
+
 
 class BeerShowContainer extends Component {
   constructor(props){
@@ -9,7 +11,6 @@ class BeerShowContainer extends Component {
     this.deleteBeer = this.deleteBeer.bind(this)
     this.handleDelete = this.handleDelete.bind(this)
   }
-
 
   componentDidMount() {
   let id = this.props.params.id
@@ -53,6 +54,13 @@ class BeerShowContainer extends Component {
     .then(response => response.json())
     .then(body => window.location.href = `/beers/`)
     .catch(error => console.error(`Error in fetch: ${error.message}`))
+  }
+  editButton(event) {
+    event.preventDefault()
+    return(
+      <BeerFormContainer
+      />
+    )
   }
 
   render() {
