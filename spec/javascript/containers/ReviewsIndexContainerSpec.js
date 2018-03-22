@@ -10,7 +10,7 @@ describe('ReviewsIndexContainer', () => {
       params={{beer_id: 1}}
      />)
   })
-  
+
   it('should load with the default state', () => {
     expect(wrapper.state()).toEqual({
       reviews: [], users: [], priorVotes: [], currentUser: {}
@@ -18,7 +18,7 @@ describe('ReviewsIndexContainer', () => {
   })
 
   it('should display an h2', () => {
-    expect(wrapper.find('h2').at(0).text()).toBe('Reviews')
+    expect(wrapper.find('h2').at(1).text()).toBe('Reviews')
   })
 
   it('should display a review form container', () => {
