@@ -74,13 +74,15 @@ class ReviewsIndexContainer extends Component {
   }
   upVote(id) {
     let upvote = { vote: {
-      value: 1, review_id: id, beer_id: Number(this.props.beer_id)
+      value: 1, review_id: id, beer_id: Number(this.props.beer_id),
+      user_id: this.state.currentUser.id
     }}
     this.castVote(upvote)
   }
   downVote(id) {
     let downvote = { vote: {
-      value: -1, review_id: id, beer_id: Number(this.props.beer_id)
+      value: -1, review_id: id, beer_id: Number(this.props.beer_id),
+      user_id: this.state.currentUser.id
     }}
     this.castVote(downvote)
   }
