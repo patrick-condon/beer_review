@@ -2,6 +2,7 @@
 # :confirmable, :lockable, :timeoutable and :omniauthable
 class User < ApplicationRecord
   has_many :reviews
+  has_many :votes
 
   validates :username, uniqueness: true
   validates :username, presence: true

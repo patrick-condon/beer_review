@@ -9,9 +9,12 @@ require 'faker'
 
 Beer.delete_all
 User.delete_all
+Review.delete_all
+Vote.delete_all
 beers = []
 users = []
-5.times do |x|
+reviews = []
+2.times do |x|
   beers << Beer.create(
     beer_name: Faker::Beer.name,
     brewery_name: Faker::TwinPeaks.location,
@@ -19,13 +22,24 @@ users = []
     beer_abv: Faker::Beer.alcohol
   )
 end
-5.times do |x|
+8.times do |x|
   beers << Beer.create(
     beer_name: Faker::Beer.name,
     brewery_name: Faker::TwinPeaks.location,
     beer_style: Faker::Beer.style,
     beer_abv: Faker::Beer.alcohol,
-    beer_description: Faker::Seinfeld.quote,
+    beer_description: Faker::SiliconValley.quote,
+    beer_label: Faker::Avatar.image,
+    beer_active: rand(2)
+  )
+end
+10.times do |x|
+  beers << Beer.create(
+    beer_name: Faker::Beer.name,
+    brewery_name: Faker::DrWho.specie,
+    beer_style: Faker::Beer.style,
+    beer_abv: Faker::Beer.alcohol,
+    beer_description: Faker::ChuckNorris.fact,
     beer_label: Faker::Avatar.image,
     beer_active: rand(2)
   )
@@ -37,12 +51,37 @@ end
     password: Faker::Internet.password
   )
 end
-20.times do |x|
-  Review.create(
-    beer_id: beers[rand(10)].id,
+5.times do |x|
+  users << User.create(
+    email: Faker::Internet.email,
+    username: Faker::DrWho.character,
+    password: Faker::Internet.password
+  )
+end
+User.create(
+  email: 'admin@email.com',
+  username: 'administrator',
+  password: 'password',
+  role: 'admin'
+)
+30.times do |x|
+  reviews << Review.create(
+    beer_id: beers[rand(20)].id,
     body: Faker::RickAndMorty.quote,
     rating: rand(5) + 1,
     vote_score: 0,
-    user_id: users[rand(5)].id
+    user_id: users[rand(10)].id
   )
+end
+reviews.each do |review|
+  users.each do |user|
+    vote = Vote.create!(
+      value: rand(3) - 1,
+      user_id: user.id,
+      review_id: review.id,
+      beer_id: review.beer_id
+    )
+    review.vote_score += vote.value
+    review.save
+  end
 end

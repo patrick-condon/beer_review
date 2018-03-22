@@ -5,4 +5,6 @@ class BeersController < ApplicationController
   def new_beer; end
 
   def show; end
+
+  def edit; end
 end

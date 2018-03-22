@@ -13,7 +13,7 @@ describe('ReviewsIndexContainer', () => {
 
   it('should load with the default state', () => {
     expect(wrapper.state()).toEqual({
-      reviews: [], users: [], currentUser: {}
+      reviews: [], users: [], priorVotes: [], currentUser: {}
     })
   })
 
