@@ -9,7 +9,7 @@ class BeersIndexContainer extends Component {
     this.state = {
       allBeers: [],
       searchResults: [],
-      title: 'All Beers',
+      title: 'Welcome to the Belcher Report',
       beersPerPage: 6,
       currentPage: 1
       }
@@ -29,7 +29,7 @@ class BeersIndexContainer extends Component {
     this.setState({title: 'Search Results', searchResults: results})
   }
   backToAll() {
-    this.setState({ title: 'All Beers', searchResults: [], currentPage: 1 })
+    this.setState({ title: 'Welcome to the Belcher Report', searchResults: [], currentPage: 1 })
   }
   handleClick(event) {
     this.setState({
@@ -58,7 +58,7 @@ class BeersIndexContainer extends Component {
   render() {
     let beersPerPage = this.state.beersPerPage
     let displayBeers
-    if (this.state.title == 'All Beers') {
+    if (this.state.title == 'Welcome to the Belcher Report') {
       let lastIndex = this.state.currentPage * beersPerPage
       let firstIndex = lastIndex - beersPerPage
       displayBeers = this.state.allBeers.slice(firstIndex, lastIndex)
@@ -66,12 +66,17 @@ class BeersIndexContainer extends Component {
       displayBeers = this.state.searchResults
     }
     let beers = displayBeers.map(beer => {
+    let label = "https://res.cloudinary.com/teepublic/image/private/s--Q0hxbAVt--/t_Resized Artwork/c_fit,g_north_west,h_954,w_954/co_191919,e_outline:48/co_191919,e_outline:inner_fill:48/co_ffffff,e_outline:48/co_ffffff,e_outline:inner_fill:48/co_bbbbbb,e_outline:3:1000/c_mpad,g_center,h_1260,w_1260/b_rgb:eeeeee/c_limit,f_jpg,h_630,q_90,w_630/v1497200957/production/designs/1660854_1.jpg";
+    if (beer.beer_label != '' && beer.beer_label != null) {
+      label = beer.beer_label
+    }
       return (
         <BeerTile
           key={beer.id}
           id={beer.id}
           name={beer.beer_name}
           style={beer.beer_style}
+          label={label}
         />
       )
     })
@@ -92,19 +97,21 @@ class BeersIndexContainer extends Component {
       );
     })
     let link
-    if (this.state.title == 'All Beers') {
+    if (this.state.title == 'Welcome to the Belcher Report') {
       link = <Link to={'add_new_beer'}>Add New Beer</Link>
     } else {
       link = <a onClick={this.backToAll}>Back to All Beers</a>
     }
     return(
-      <div>
+      <div id="beers_index">
         <h1>{this.state.title}</h1>
         <SearchBarContainer
           beers={this.state.beers}
           search={this.search}
         />
-        {beers}
+        <div className="index-container">
+          {beers}
+        </div>
         <ul id="page-numbers">
           {pages}
         </ul>

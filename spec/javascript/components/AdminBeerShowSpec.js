@@ -28,19 +28,19 @@ describe('BeerShow', () => {
   })
 
   it('renders a li tag with the beer style', () => {
-    expect(wrapper.find('[label="style"]').text()).toBe("Test Style")
+    expect(wrapper.find('[label="style"]').text()).toBe("Style: Test Style")
   })
 
   it('renders a li tag with the beer abv', () => {
-    expect(wrapper.find('[label="abv"]').text()).toBe("9.9")
+    expect(wrapper.find('[label="abv"]').text()).toBe("ABV: 9.9")
   })
 
   it('renders a li tag with the beer description', () => {
-    expect(wrapper.find('[label="description"]').text()).toBe("Test Description")
+    expect(wrapper.find('[label="description"]').text()).toBe("Description: Test Description")
   })
 
   it('renders a li tag with the beer availabilty', () => {
-    expect(wrapper.find('[label="availabilty"]').text()).toBe("available")
+    expect(wrapper.find('[label="availabilty"]').text()).toBe("Availability: available")
   })
 
   it('contains an image of the beer label', () => {

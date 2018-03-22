@@ -1,6 +1,10 @@
-<h1><%= @user.username %></h1>
+<div class="user-show">
+<h2 id="username"><%= @user.username %></h2>
 <img src=<%= @profile_photo %> height="200" width="200"
 <br>
 <p><%= @user.email %></p>
-<div><%= button_to "Delete User", user_path, method: :delete, :data => {:confirm => 'Are you sure?' }%></div>
-<div><%= button_to 'Admin Home', users_path, method: :get %></div>
+<% if current_user.admin? %>
+  <div id="delete"><%= button_to "Delete User", user_path, method: :delete, :data => {:confirm => 'Are you sure?' }%></div>
+  <div id="admin-home"><%= button_to 'Admin Home', users_path, method: :get %></div>
+<% end %>
+</div>
