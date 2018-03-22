@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import BeerShow from '../components/BeerShow';
 import ReviewsIndexContainer from '../containers/ReviewsIndexContainer'
-import BeerFormContainer from '../containers/BeerFormContainer'
-
+import { Link } from 'react-router';
 
 class BeerShowContainer extends Component {
   constructor(props){
@@ -55,13 +54,6 @@ class BeerShowContainer extends Component {
     .then(body => window.location.href = `/beers/`)
     .catch(error => console.error(`Error in fetch: ${error.message}`))
   }
-  editButton(event) {
-    event.preventDefault()
-    return(
-      <BeerFormContainer
-      />
-    )
-  }
 
   render() {
     let showBeer = this.state.beer
@@ -88,8 +80,23 @@ class BeerShowContainer extends Component {
       deleteButton = ""
     }
 
+    let viewable;
+    if(this.state.currentUser.role != "admin") {
+      viewable = "hidden"
+    } else {
+      viewable = ""
+    }
+
+    let editButton =
+      <div className='edit-button' hidden={viewable}>
+        <Link to={`/beers/${this.state.beer.id}/edit`}>
+          <button>Edit</button>
+        </Link>
+      </div>
+
     return(
       <div>
+        {editButton}
         <BeerShow
           key={this.state.beer.id} beer_name={this.state.beer.beer_name}
           brewery_name={this.state.beer.brewery_name}
