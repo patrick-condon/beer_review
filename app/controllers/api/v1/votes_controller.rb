@@ -1,4 +1,4 @@
-#api endpoint for votes
+# api endpoint for votes
 class Api::V1::VotesController < ApiController
   before_action :authenticate_user!
 
@@ -10,7 +10,7 @@ class Api::V1::VotesController < ApiController
       vote = Vote.new(vote_params)
       vote.user = user
       prior_vote = Vote.where('user_id = ? AND review_id = ?',
-                             vote.user_id, vote.review_id)[0]
+                              vote.user_id, vote.review_id)[0]
       if prior_vote
         if prior_vote.value == vote.value
           prior_vote.value = 0
@@ -32,7 +32,7 @@ class Api::V1::VotesController < ApiController
         reviews = Review.where(beer_id: vote.beer_id).order(:created_at).reverse
         users = get_users(reviews)
         prior_votes = Vote.where('user_id = ? AND beer_id = ?',
-                                  user.id, vote.beer_id)
+                                 user.id, vote.beer_id)
         render json: { reviews: reviews, users: users,
                        prior_votes: prior_votes, user: user }
       end

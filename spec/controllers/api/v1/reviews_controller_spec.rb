@@ -45,8 +45,8 @@ RSpec.describe Api::V1::ReviewsController, type: :controller do
     it 'does not allow a user to post if not signed in' do
       sign_in nil
       post_json = { review: { rating: 4.5, beer_id: first_beer.id,
-                  user_id: user1.id, vote_score: 0,
-                  body: 'It was beer' } }.to_json
+                    user_id: user1.id, vote_score: 0,
+                    body: 'It was beer' } }.to_json
       post(:create, params: {beer_id: first_beer.id}, body: post_json)
       expect(response).to redirect_to(new_user_session_path)
     end

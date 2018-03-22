@@ -11,7 +11,7 @@ class Api::V1::ReviewsController < ApiController
     if current_user
       user = current_user
       prior_votes = Vote.where('user_id = ? AND beer_id = ?',
-                              user.id, params[:beer_id])
+                               user.id, params[:beer_id])
     end
     render json: { reviews: reviews, users: users,
                    prior_votes: prior_votes, user: user }
@@ -37,7 +37,7 @@ class Api::V1::ReviewsController < ApiController
       reviews = Review.where(beer_id: params[:review][:beer_id]).order(:created_at).reverse
       users = get_users(reviews)
       prior_votes = Vote.where('user_id = ? AND beer_id = ?',
-                              user.id, params[:review][:beer_id])
+                               user.id, params[:review][:beer_id])
       render json: { reviews: reviews, users: users,
                      prior_votes: prior_votes, user: user }
     else
