@@ -21,8 +21,8 @@ RSpec.describe Api::V1::VotesController, type: :controller do
   describe 'POST#create' do
     it 'does not allow a user to vote if not signed in' do
       sign_in nil
-      post_json = {value: 1, review_id: review.id,
-                   beer_id: first_beer.id}
+      post_json = { value: 1, review_id: review.id,
+                   beer_id: first_beer.id }
       post(:create, params: { beer_id: first_beer.id, review_id: review.id,
                               vote: post_json })
       expect(response).to redirect_to(new_user_session_path)

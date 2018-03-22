@@ -1,3 +1,4 @@
+#api endpoint for votes
 class Api::V1::VotesController < ApiController
   before_action :authenticate_user!
 
@@ -8,7 +9,8 @@ class Api::V1::VotesController < ApiController
       user = current_user
       vote = Vote.new(vote_params)
       vote.user = user
-      prior_vote = Vote.where('user_id = ? AND review_id = ?', vote.user_id, vote.review_id)[0]
+      prior_vote = Vote.where('user_id = ? AND review_id = ?',
+                             vote.user_id, vote.review_id)[0]
       if prior_vote
         if prior_vote.value == vote.value
           prior_vote.value = 0

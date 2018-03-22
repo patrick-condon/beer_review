@@ -116,7 +116,6 @@ class ReviewsIndexContainer extends Component {
   }
 
   render() {
-    console.log(this.state)
     let users = this.state.users
     let priorVotes = this.state.priorVotes
     let reviews = this.state.reviews.map(review => {

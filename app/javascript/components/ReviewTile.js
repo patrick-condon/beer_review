@@ -18,7 +18,7 @@ const ReviewTile = props => {
         <button onClick={props.upVote} className={upClass}>
           {upText}
         </button>
-        Vote Score: {props.voteScore} 
+        Vote Score: {props.voteScore}
         <button onClick={props.downVote} className={downClass}>
           {downText}
         </button>
