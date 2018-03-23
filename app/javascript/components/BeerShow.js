@@ -4,8 +4,9 @@ import { Link } from 'react-router';
 const BeerShow = props => {
   return(
     <div className="beer-show">
-      <img id="beer-img" src={props.beer_label} height="200px" width="200px"/><h2 id="beer-show">{props.beer_name}</h2>
-      <h6>by</h6>
+      <img id="beer-img" src={props.beer_label} height="200px" width="200px"/><br />
+      <h2 id="beer-show">{props.beer_name}</h2><br />
+      <h6>by</h6><br />
       <h3><strong>{props.brewery_name}</strong></h3>
 
         <ul id="beer-show">

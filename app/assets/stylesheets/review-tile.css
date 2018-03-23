@@ -1,0 +1,30 @@
+.review-tile {
+  /*border: 1px solid black;*/
+  box-shadow: 0 2px 5px 2px grey;
+  transition: .3s;
+  padding: .5rem;
+  margin-bottom: 1rem;
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+.vote-button {
+  height: 3rem;
+  width: 9rem;
+  background-color: #FE9A06;
+  margin: .5rem;
+  padding: 0;
+  transition: background-color 300ms ease-out;
+  transition-property: background-color;
+  transition-duration: 300ms;
+  transition-timing-function: ease-out;
+  transition-delay: initial;
+
+}
+.clicked {
+  border: 1.5px solid black;
+  background-color: #2DB5A0;
+}
+.vote-button:hover {
+  background-color: #2DB5A0;
+
+}
