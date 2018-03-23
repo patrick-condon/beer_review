@@ -204,47 +204,49 @@ class BeerFormContainer extends Component {
       <form className="new-beer-form" onSubmit={this.handleFormSubmit}>
         <h2>{title}</h2>
         {errorDiv}
-        <TextField
-          content={this.state.beerName}
-          label="Beer Name"
-          name="beer-name"
-          handleChange={this.handleBeerNameChange}
-        />
-        <TextField
-          content={this.state.breweryName}
-          label="Brewery Name"
-          name="brewery-name"
-          handleChange={this.handleBreweryNameChange}
-        />
-        <TextField
-          content={this.state.beerStyle}
-          label="Beer Style"
-          name="beer-style"
-          handleChange={this.handleBeerStyleChange}
-        />
-        <TextField
-          content={this.state.beerAbv}
-          label="Beer ABV"
-          name="beer-abv"
-          handleChange={this.handleBeerAbvChange}
-        />
-        <TextField
-          content={this.state.beerDescription}
-          label="Beer Description (optional)"
-          name="beer-description"
-          handleChange={this.handleBeerDescriptionChange}
-        />
-        <TextField
-          content={this.state.beerLabel}
-          label="Beer Label URL (optional)"
-          name="beer-label"
-          handleChange={this.handleBeerLabelChange}
-        />
-        <label>Is Beer Currently Available?
-          <input type="radio" name="beer-active" value="1"  onChange={this.handleBeerActiveChange}/>Yes
-          <input type="radio" name="beer-active" value="0"  onChange={this.handleBeerActiveChange}/>No
-        </label>
-        <input type="submit" value={buttonText} />
+        <div className="new-beer-fields">
+          <TextField
+            content={this.state.beerName}
+            label="Beer Name"
+            name="beer-name"
+            handleChange={this.handleBeerNameChange}
+          />
+          <TextField
+            content={this.state.breweryName}
+            label="Brewery Name"
+            name="brewery-name"
+            handleChange={this.handleBreweryNameChange}
+          />
+          <TextField
+            content={this.state.beerStyle}
+            label="Beer Style"
+            name="beer-style"
+            handleChange={this.handleBeerStyleChange}
+          />
+          <TextField
+            content={this.state.beerAbv}
+            label="Beer ABV"
+            name="beer-abv"
+            handleChange={this.handleBeerAbvChange}
+          />
+          <TextField
+            content={this.state.beerDescription}
+            label="Beer Description (optional)"
+            name="beer-description"
+            handleChange={this.handleBeerDescriptionChange}
+          />
+          <TextField
+            content={this.state.beerLabel}
+            label="Beer Label URL (optional)"
+            name="beer-label"
+            handleChange={this.handleBeerLabelChange}
+          />
+          <label>Is Beer Currently Available?
+            <input type="radio" name="beer-active" value="1"  onChange={this.handleBeerActiveChange}/>Yes
+            <input type="radio" name="beer-active" value="0"  onChange={this.handleBeerActiveChange}/>No
+          </label>
+          <input type="submit" value={buttonText} />
+        </div>
       </form>
     )
   }
