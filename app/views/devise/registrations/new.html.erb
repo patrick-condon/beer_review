@@ -1,8 +1,11 @@
-<h2>Sign up</h2>
-
+<div class="sign-up-user">
+  <div class="sign-up-title">
+    <h2 style="margin-left: 100px">Sign up</h2>
+  </div>
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= devise_error_messages! %>
-
+  <div class="error-sign-up">
+    <%= devise_error_messages! %>
+  </div>
   <div class="field">
     <%= f.label :username %><br />
     <%= f.text_field :username, autofocus: true, autocomplete: "off" %>
@@ -38,3 +41,4 @@
 <% end %>
 
 <%= render "devise/shared/links" %>
+</div>

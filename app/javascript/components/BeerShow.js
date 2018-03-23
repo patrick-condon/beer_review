@@ -15,7 +15,7 @@ const BeerShow = props => {
           <li label="description"><strong>Description: </strong>{props.beer_description}</li>
           <li label="availabilty"><strong>Availability: </strong>{props.beer_active}</li>
         </ul>
-        <Link to='/'>
+        <Link to='/' className="back-to-beer">
           Back to Beers List
         </Link>
 
