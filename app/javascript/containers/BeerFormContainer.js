@@ -173,9 +173,13 @@ class BeerFormContainer extends Component {
         if (response.ok) {
           return response
         } else {
+          if (response.status == 401) {
+            alert('You must be signed in to do that')
+          } else {
           let errorMessage = `${response.status}`
-          let error = new Error(errorMessage)
+          error = new Error(errorMessage)
           throw(error)
+          }
         }
       }
     )

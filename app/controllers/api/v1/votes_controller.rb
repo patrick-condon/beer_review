@@ -35,6 +35,8 @@ class Api::V1::VotesController < ApiController
         render json: { reviews: reviews, users: users,
                        prior_votes: prior_votes, user: user }
       end
+    else
+      render json: { errors: ['You must be signed in to vote']}
     end
   end
 
