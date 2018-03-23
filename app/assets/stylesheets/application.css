@@ -113,6 +113,20 @@
    list-style-type: none;
  }
 
+ div.sign-in-user h2 {
+   margin-left: 100px;
+ }
+
+ div.sign-in-user a {
+  margin-left: 110px;
+  font-size: 125%;
+ }
+
+ div.sign-up-user a {
+   margin-left: 110px;
+   font-size: 125%;
+ }
+
  input#user_username {
    width: 500px;
    background-color: #E5EAF0;
@@ -174,6 +188,11 @@
  form#edit_user.edit_user {
    color: #066CB2;
    margin-left: 10px;
+ }
+
+ form#new_user {
+   color: #066CB2;
+   margin-left: 110px;
  }
 
  li.user-link {
@@ -421,16 +440,9 @@ div#beers_index h1 {
   margin: 0 auto;
 }
 
- .review-tile {
-   border: 1px solid black;
-   padding: .5rem;
-   margin-bottom: 1rem;
- }
- .vote-button{
-   margin: .5rem;
- }
- .clicked {
-   border: 1.5px solid black;
+ .back-to-beer {
+   text-shadow: 4px 3px 2px rgba(150, 150, 150, 0.72);
+   font-size: 26px;
  }
 
  img {
@@ -461,4 +473,3 @@ div#beers_index h1 {
  input:not([type]), input[type="text"], input[type="password"], input[type="date"], input[type="datetime"], input[type="datetime-local"], input[type="month"], input[type="week"], input[type="email"], input[type="number"], input[type="search"], input[type="tel"], input[type="time"], input[type="url"], input[type="color"], textarea {
     font-size: 1.875rem;
 }
-
