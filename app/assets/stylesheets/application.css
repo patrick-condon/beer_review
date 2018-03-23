@@ -419,16 +419,3 @@ div#beers_index h1 {
   text-align: center;
   margin: 0 auto;
 }
-
- .review-tile {
-   border: 1px solid black;
-   padding: .5rem;
-   margin-bottom: 1rem;
- }
- .vote-button{
-   margin: .5rem;
- }
- .clicked {
-   border: 1.5px solid black;
- }
-
