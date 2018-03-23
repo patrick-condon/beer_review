@@ -53,16 +53,20 @@ class ReviewsIndexContainer extends Component {
         if (response.ok) {
           return response
         } else {
+          if (response.status == 401) {
+            alert('You must be signed in to do that')
+          } else {
           let errorMessage = `${response.status}`
           error = new Error(errorMessage)
           throw(error)
+          }
         }
       }
     )
     .then(response => response.json())
     .then(body => {
-      this.setState({ reviews: body.reviews, users: body.users,
-                      priorVotes: body.prior_votes, currentUser: body.user });
+        this.setState({ reviews: body.reviews, users: body.users,
+                        priorVotes: body.prior_votes, currentUser: body.user });
     })
     .catch(error => console.error(`Error in fetch: ${error.message}`))
   }
@@ -118,6 +122,7 @@ class ReviewsIndexContainer extends Component {
   }
 
   render() {
+    console.log(this.state)
     let users = this.state.users
     let priorVotes = this.state.priorVotes
     let reviews = this.state.reviews.map(review => {
@@ -153,7 +158,6 @@ class ReviewsIndexContainer extends Component {
         />
       )
     })
-
     return(
       <div>
         <div id="review-form">
