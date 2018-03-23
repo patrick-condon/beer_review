@@ -35,6 +35,7 @@
    margin-right: auto;
    margin-left: auto;
    text-align: center;
+   margin-bottom: 30px;
  }
 
  ul#page-numbers a{
@@ -419,3 +420,45 @@ div#beers_index h1 {
   text-align: center;
   margin: 0 auto;
 }
+
+ .review-tile {
+   border: 1px solid black;
+   padding: .5rem;
+   margin-bottom: 1rem;
+ }
+ .vote-button{
+   margin: .5rem;
+ }
+ .clicked {
+   border: 1.5px solid black;
+ }
+
+ img {
+    display: inline-block;
+    vertical-align: middle;
+    max-width: 300px;
+    min-width: 300px;
+    max-height: 300px;
+    min-height: 300px;
+ }
+
+ h2#username {
+   display: block;
+ }
+
+ div.add-beer {
+   font-size: 30px;
+   text-align: center;
+   margin-bottom: 100px;
+ }
+
+ div.add-beer:hover {
+   font-size: 30px;
+   text-align: center;
+   text-shadow: 4px 3px 2px rgba(150, 150, 150, 0.72);
+ }
+
+ input:not([type]), input[type="text"], input[type="password"], input[type="date"], input[type="datetime"], input[type="datetime-local"], input[type="month"], input[type="week"], input[type="email"], input[type="number"], input[type="search"], input[type="tel"], input[type="time"], input[type="url"], input[type="color"], textarea {
+    font-size: 1.875rem;
+}
+

@@ -122,7 +122,7 @@ class BeersIndexContainer extends Component {
         <ul id="page-numbers">
           {pages}
         </ul>
-        {link}
+        <div className="add-beer">{link}</div>
       </div>
     )
   }
