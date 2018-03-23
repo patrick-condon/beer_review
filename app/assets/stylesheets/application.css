@@ -421,18 +421,6 @@ div#beers_index h1 {
   margin: 0 auto;
 }
 
- .review-tile {
-   border: 1px solid black;
-   padding: .5rem;
-   margin-bottom: 1rem;
- }
- .vote-button{
-   margin: .5rem;
- }
- .clicked {
-   border: 1.5px solid black;
- }
-
  img {
     display: inline-block;
     vertical-align: middle;
@@ -461,4 +449,3 @@ div#beers_index h1 {
  input:not([type]), input[type="text"], input[type="password"], input[type="date"], input[type="datetime"], input[type="datetime-local"], input[type="month"], input[type="week"], input[type="email"], input[type="number"], input[type="search"], input[type="tel"], input[type="time"], input[type="url"], input[type="color"], textarea {
     font-size: 1.875rem;
 }
-
